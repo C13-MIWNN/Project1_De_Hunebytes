@@ -13,4 +13,12 @@ import jakarta.persistence.Id;
 public class Recipe {
     @Id @GeneratedValue
     private Long recipeId;
+
+    public Recipe(Long recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public Recipe() {
+
+    }
 }
