@@ -19,6 +19,6 @@ public class RecipeController {
     @GetMapping("/")
     private String showRecipe(Model model) {
         model.addAttribute("Recipes", recipeRepository.findAll());
-        return "recipeOverview";
+        return "recipeDetail";
     }
 }
