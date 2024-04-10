@@ -23,7 +23,7 @@ public class RecipeController {
 
     @GetMapping("/recipe/detail/{recipeTitle}")
     private String showRecipeDetail(@PathVariable("recipeTitle") String recipeTitle, Model model) {
-        Optional<Recipe> recipe = recipeRepository.findByTitle(recipeTitle);
+        Optional<Recipe> recipe = recipeRepository.findByRecipeTitle(recipeTitle);
 
         if (recipe.isEmpty()) {
             return "redirect:/homepageOverview";
