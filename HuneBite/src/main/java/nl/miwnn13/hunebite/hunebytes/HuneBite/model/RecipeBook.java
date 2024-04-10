@@ -26,4 +26,20 @@ public class RecipeBook {
 
     public RecipeBook() {
     }
+
+    public Long getRecipeBookId() {
+        return recipeBookId;
+    }
+
+    public void setRecipeBookId(Long recipeBookId) {
+        this.recipeBookId = recipeBookId;
+    }
+
+    public String getRecipeBookName() {
+        return recipeBookName;
+    }
+
+    public void setRecipeBookName(String recipeBookName) {
+        this.recipeBookName = recipeBookName;
+    }
 }

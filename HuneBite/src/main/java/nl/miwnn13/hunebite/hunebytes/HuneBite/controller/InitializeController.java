@@ -3,7 +3,7 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.BookRepository;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
@@ -21,13 +21,13 @@ import java.util.Set;
     @Controller
     public class InitializeController {
 
-        private final BookRepository bookRepository;
+        private final RecipeBookRepository recipeBookRepository;
         private final IngredientRepository ingredientRepository;
         private final RecipeRepository recipeRepository;
         private final TagRepository tagRepository;
 
-    public InitializeController(BookRepository bookRepository, IngredientRepository ingredientRepository, RecipeRepository recipeRepository, TagRepository tagRepository) {
-        this.bookRepository = bookRepository;
+    public InitializeController(RecipeBookRepository recipeBookRepository, IngredientRepository ingredientRepository, RecipeRepository recipeRepository, TagRepository tagRepository) {
+        this.recipeBookRepository = recipeBookRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
         this.tagRepository = tagRepository;
@@ -49,26 +49,24 @@ import java.util.Set;
 
     private RecipeBook makeRecipeBook(String title) {
         RecipeBook recipeBook = new RecipeBook();
-        recipeBook.setTitle(title);
+        recipeBook.setRecipeBookName(title);
 
-        Set<RecipeBook> authorSet = new HashSet<>();
-        authorSet.add(recipeBook);
-        RecipeBook.setRecipeBook(authorSet);
-
-        bookRepository.save(recipeBook);
+        Set<RecipeBook> recipeBookSet = new HashSet<>();
+        recipeBookSet.add(recipeBook);
+        recipeBookRepository.save(recipeBook);
         return recipeBook;
     }
 
     private Recipe makeRecipe(String name) {
         Recipe recipe = new Recipe();
-        recipe.setname = new Recipe();
+        recipe.setRecipeTitle(name);
         recipeRepository.save(recipe);
         return recipe;
     }
 
     private Ingredient makeIngredient(String ingredient) {
         Ingredient defaultingredient = new Ingredient();
-        defaultingredient.setingredient();
+        defaultingredient.setIngredientName(ingredient);
         ingredientRepository.save(defaultingredient);
         return defaultingredient;
     }

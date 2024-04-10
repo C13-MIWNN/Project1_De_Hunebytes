@@ -1,7 +1,6 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.BookRepository;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Purpose for the class
  **/
 @Controller
-public class BookController {
-    private final BookRepository bookRepository;
+public class RecipeBookController {
+    private final RecipeBookRepository recipeBookRepository;
 
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public RecipeBookController(RecipeBookRepository recipeBookRepository) {
+        this.recipeBookRepository = recipeBookRepository;
     }
 
 @GetMapping({"/"})
     public String showOverviewPage(Model model) {
-        model.addAttribute("RecipeBook", bookRepository.findAll());
+        model.addAttribute("RecipeBook", recipeBookRepository.findAll());
 
         return "homepageOverview";
     }
