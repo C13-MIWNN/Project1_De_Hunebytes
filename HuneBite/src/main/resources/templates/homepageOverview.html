@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+    <link rel="stylesheet" href="../static/Library.css">
+        .centered {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background-color: lightgray;
+         padding: 20px;
+     }
+    </style>
 </head>
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
 <div class="container">
     <h1>Overview of recipebooks</h1>
-    <button type="button" class="btn btn-danger">Dont Click Here!</button>
 
+    <div class="container, centered" >
+        <div class="search">
+        <input type="text" placeholder="Search">
+        <button>Search</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger">Make Recipe</button>
+            <button type="button" class="btn btn-danger">Make Ingredient</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>
