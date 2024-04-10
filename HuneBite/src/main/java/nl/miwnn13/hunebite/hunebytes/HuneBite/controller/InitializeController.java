@@ -1,6 +1,5 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
@@ -11,7 +10,6 @@ import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.awt.print.Book;
 import java.util.HashSet;
 import java.util.Set;
 
