@@ -9,5 +9,5 @@ import java.awt.print.Book;
  * @author Justin Lamberts
  * Purpose for the class
  **/
-public interface BookRepository extends JpaRepository<RecipeBook, String> {
+public interface BookRepository extends JpaRepository<RecipeBook, Long> {
 }
