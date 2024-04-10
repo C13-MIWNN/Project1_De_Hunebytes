@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RecipeController {
+
     private final nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.recipeRepository recipeRepository;
+
     public RecipeController(nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.recipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
