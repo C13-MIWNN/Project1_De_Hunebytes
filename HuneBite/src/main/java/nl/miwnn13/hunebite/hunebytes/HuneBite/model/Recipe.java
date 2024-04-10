@@ -1,8 +1,9 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Justin Lamberts
@@ -15,6 +16,10 @@ public class Recipe {
     private Long recipeId;
     private String recipeTitle;
     private String recipeDescription;
+    @ElementCollection @OrderColumn
+    private List<String> recipeSteps;
+    @ManyToMany
+    private Set<Ingredient> ingredients;
 
     public Long getRecipeId() {
         return recipeId;
@@ -40,4 +45,19 @@ public class Recipe {
         this.recipeDescription = recipeDescription;
     }
 
+    public List<String> getRecipeSteps() {
+        return recipeSteps;
+    }
+
+    public void setRecipeSteps(List<String> recipeSteps) {
+        this.recipeSteps = recipeSteps;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }
