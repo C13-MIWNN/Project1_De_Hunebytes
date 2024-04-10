@@ -3,10 +3,6 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Justin Lamberts

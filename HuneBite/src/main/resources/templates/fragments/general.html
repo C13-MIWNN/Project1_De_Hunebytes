@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="baseHeader(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}"></title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/css/library.css" />
+</head>
+<body>
+<div>"navbar"</div>
+
+<div th:fragment="footer">
+    <footer><p class="text-center text text-muted">Copyright Tim Bulder, Mareth Westhoff, Justin Lamberts &copy;2024</p></footer>
+</div>
+
+<div th:fragment="navbar">
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

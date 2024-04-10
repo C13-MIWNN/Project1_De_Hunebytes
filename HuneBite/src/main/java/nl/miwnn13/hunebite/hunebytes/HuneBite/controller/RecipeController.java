@@ -1,12 +1,8 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.Optional;
 
 /**
  * @author Justin Lamberts
