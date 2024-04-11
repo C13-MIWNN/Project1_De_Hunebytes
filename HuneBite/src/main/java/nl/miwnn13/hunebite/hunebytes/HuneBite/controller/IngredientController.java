@@ -30,15 +30,15 @@ public class IngredientController {
     return "ingredientOverview";
     }
 
-@PostMapping("/ingredient/new")
+    @PostMapping("/ingredient/new")
    private String AddNewIngredient(@ModelAttribute("newIngredient")
-                                   Ingredient ingredient,
-                                   BindingResult ingredientresult) {
-    if (!ingredientresult.hasErrors()) {
-        ingredientRepository.save(ingredient);
-    }
-    return "redirect:/ingredient";
-}
+                                       Ingredient ingredient, BindingResult ingredientresult) {
 
+        if (!ingredientresult.hasErrors()) {
+            ingredientRepository.save(ingredient);
+        }
+
+        return "redirect:/ingredient";
+    }
 
 }
