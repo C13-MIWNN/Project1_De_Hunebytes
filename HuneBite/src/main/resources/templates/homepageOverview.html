@@ -3,11 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .parent {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: dimgray;
+        }
+        .containerCenter {
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            top: 50%;
+            display: flex;
+            width: 50%; /* Set width of the container */
+            height: 700px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Set left and right margins to 'auto' */
+            background-color: white; /* Optional background color */
+            padding: 20px; /* Optional padding */
+            transform: translate(-50%, -50%);
+        }
+        .containerHead {
+            display: flex;
+            top: 0%;
+            width: 50%; /* Set width of the container */
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Set left and right margins to 'auto' */
+            background-color: forestgreen; /* Optional background color */
+            padding: 20px; /* Optional padding */
+        }
+        .container-left{
+            left: 0;
+            position: absolute;
+            width: 25%; /* Set width of the container */
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Set left and right margins to 'auto' */
+            background-color: white; /* Optional background color */
+            padding: 20px; /* Optional padding */
+        }
+        .container-right {
+            right: 0;
+            position: absolute;
+            width: 25%; /* Set width of the container */
+            height: 100px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Set left and right margins to 'auto' */
+            background-color: white; /* Optional background color */
+            padding: 20px; /* Optional padding */
+        }
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
 </head>
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
-<div class="container">
-    <h1>Overview of recipebooks</h1>
+
+<div class="containerHead">
+    <h1>HuneBite</h1>
+</div>
+<div class="parent">
+    <div class="containerCenter">
+    <table>
+        <td>
+        <h1>Search our Page</h1>
+        </td>
+        <div class="container" >
+            <tr>
+                <td>
+                <div class="search" >
+                    <input type="text" placeholder="Search">
+                    <button>Search</button>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <div class="buttons">
+                    <button type="button" class="btn btn-danger">Make Recipe</button>
+                    <button type="button" class="btn btn-danger">Make Ingredient</button>
+                </div>
+                </td>
+            </tr>
+        </div>
+    </table>
+    </div>
+
+    <div class="container-left">
+    <h1>Menu place holder container</h1>
+
+
+    </div>
+    <div class="container-right">
+    <h1>Possibly intresting content container</h1>
+    </div>
+</div>
 
 </body>
 </html>

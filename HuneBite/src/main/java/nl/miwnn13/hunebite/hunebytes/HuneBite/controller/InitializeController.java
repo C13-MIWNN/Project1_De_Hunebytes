@@ -10,7 +10,9 @@ import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -40,7 +42,11 @@ import java.util.Set;
 
         RecipeBook favorites = makeRecipeBook("Favorites");
 
-        Recipe defaultRecipe = makeRecipe("Gekookt ei");
+        Recipe defaultRecipe1 = makeRecipe("Boiled Egg");
+        Recipe defaultRecipe2 = makeRecipe("Big Boss Burger");
+        Recipe defaultRecipe3 = makeRecipe("English breakfast");
+        Recipe defaultRecipe4 = makeRecipe("Irish stew");
+        Recipe defaultRecipe5 = makeRecipe("Dutch stamppot");
 
         Ingredient defaultIngredient = makeIngredient("Ei");
 
@@ -60,8 +66,27 @@ import java.util.Set;
     private Recipe makeRecipe(String name) {
         Recipe recipe = new Recipe();
         recipe.setRecipeTitle(name);
+        recipe.setRecipeSteps(makeRecipeStep());
+        recipe.setRecipeDescription(makeRecipeDescription());
         recipeRepository.save(recipe);
         return recipe;
+    }
+
+    private List<String> makeRecipeStep() {
+        List<String> steps = new ArrayList<>();
+        steps.add("*First you do this*");
+        steps.add("*Secondly you do this*");
+        steps.add("*Don't forget to do this*");
+        steps.add("*And then you do this*");
+        steps.add("*Finally you do this*");
+        steps.add("*But also you do this*");
+        steps.add("*Finish it by doing this*");
+
+        return steps;
+    }
+
+    private String makeRecipeDescription() {
+        return "*Insert life story and also a little bit about the actual recipe*";
     }
 
     private Ingredient makeIngredient(String ingredient) {

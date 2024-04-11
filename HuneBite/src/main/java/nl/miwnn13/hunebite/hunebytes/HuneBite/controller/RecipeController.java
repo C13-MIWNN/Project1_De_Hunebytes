@@ -14,6 +14,7 @@ import java.util.Optional;
  * Handles everything with recipies on the webpage
  **/
 
+
 @Controller
 public class RecipeController {
     private final RecipeRepository recipeRepository;
@@ -26,7 +27,7 @@ public class RecipeController {
         Optional<Recipe> recipe = recipeRepository.findByRecipeTitle(recipeTitle);
 
         if (recipe.isEmpty()) {
-            return "redirect:/homepageOverview";
+            return "redirect:/";
         }
 
         model.addAttribute("recipeToBeShown", recipe.get());

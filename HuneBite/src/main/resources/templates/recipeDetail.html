@@ -5,22 +5,17 @@
 </head>
 <body>
 
-<div th:replace="~{fragments/general :: navbar}"></div>
-
 <div class="container">
     <h1>Detail for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
 
     <h2>Steps:</h2>
     <ol type="1">
-        <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="step"></li>
+        <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
     </ol>
 
+    <h2>Recipe description:</h2>
     <p th:text="${recipeToBeShown.recipeDescription}">
     </p>
 </div>
-
-<div th:replace="~{fragments/general :: footer}"></div>
-<div th:replace="~{fragments/general :: bottomScripts}"></div>
-
 </body>
 </html>
