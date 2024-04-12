@@ -15,7 +15,8 @@ public class Ingredient {
     private Long ingredientId;
     private String ingredientName;
     private String ingredientDescription;
-    private double unitType;
+    private String unitType;
+
     private double calories;
     private double proteins;
     private double fats;
@@ -36,11 +37,11 @@ public class Ingredient {
         this.ingredientDescription = ingredientDescription;
     }
 
-    public double getUnitType() {
+    public String getUnitType() {
         return unitType;
     }
 
-    public void setUnitType(double unitType) {
+    public void setUnitType(String unitType) {
         this.unitType = unitType;
     }
 
