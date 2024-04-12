@@ -62,3 +62,10 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.submit-button {
+    display: flex;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
