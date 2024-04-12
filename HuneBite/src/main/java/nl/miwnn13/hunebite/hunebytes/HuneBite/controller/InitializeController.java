@@ -48,7 +48,11 @@ import java.util.Set;
         Recipe defaultRecipe4 = makeRecipe("Irish stew");
         Recipe defaultRecipe5 = makeRecipe("Dutch stamppot");
 
-        Ingredient defaultIngredient = makeIngredient("Ei");
+        Ingredient defaultIngredient = makeIngredient("Egg");
+        Ingredient defaultIngredient1 = makeIngredient("Cheese");
+        Ingredient defaultIngredient2 = makeIngredient("Garlic");
+        Ingredient defaultIngredient3 = makeIngredient("Thyme");
+        Ingredient defaultIngredient4 = makeIngredient("Rice");
 
         return "redirect:/";
     }
@@ -92,8 +96,30 @@ import java.util.Set;
     private Ingredient makeIngredient(String ingredient) {
         Ingredient defaultingredient = new Ingredient();
         defaultingredient.setIngredientName(ingredient);
+        defaultingredient.setIngredientDescription(makeIngredientDescription());
+        defaultingredient.setUnitType(makeIngredientType());
+        defaultingredient.setCalories(makeIngredientCalories());
+        defaultingredient.setFats(makeIngredientFats());
+        defaultingredient.setProteins(makeIngredientProteins());
+
         ingredientRepository.save(defaultingredient);
         return defaultingredient;
+    }
+    private String makeIngredientDescription() {
+        return "Is yummy and makes you fat.";
+    }
+
+    private String makeIngredientType() {
+        return "gram";
+    }
+    private double makeIngredientCalories() {
+        return 1000;
+    }
+    private double makeIngredientFats() {
+        return 1500;
+    }
+    private double makeIngredientProteins() {
+        return 900.1;
     }
 }
 

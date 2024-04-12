@@ -6,9 +6,28 @@
 
 </head>
 <body>
-<form th:action=" @{/ingredient/new}" method="post" th:object="${newIngredient}">
+<div class="container">
+<h1>All ingredients</h1>
+    <table>
+        <tr>
+            <th>Ingredient List</th>
 
-</form>
+
+
+        </tr>
+        <tr th:each="ingredient : ${allIngredients}">
+            <td><a th:href="@{/ingredient/detail/{ingredientName}(ingredientName = ${ingredient.ingredientName})}"
+                   th:text="${ingredient.ingredientName}"></a></td>
+
+        </tr>
+    </table>
+
+<p>
+    <a th:href="@{/ingredient/new}">Add a new ingredient.</a>
+</p>
+
+</div>
 
 </body>
 </html>
+

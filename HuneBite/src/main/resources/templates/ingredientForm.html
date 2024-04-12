@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Ingredient</title>
+    <title>Add Ingredient here</title>
+
 </head>
 <body>
-<form th:action=" @{/ingredient/new}" method="post" th:object="${newIngredient}">
+<form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
+    <table>
+        <tr>
+            <td><label for="nameField">Name</label></td>
+            <td><label for="descriptionField">Description</label></td>
+            <td><label for="unitTypeField">Unit Type</label></td>
+            <td><label for="caloriesField">Calories</label></td>
+            <td><label for="proteinsField">Proteins</label></td>
+            <td><label for="fatsField">Fats</label></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="nameField" th:field="*{ingredientName}" />
+            </td>
+            <td>
+                <input type="text" id="descriptionField" th:field="*{ingredientDescription}" />
+            </td>
+            <td>
+                <input type="text" id="unitTypeField" th:field="*{unitType}" />
+            </td>
+            <td>
+                <input type="text" id="caloriesField" th:field="*{calories}" />
+            </td>
+            <td>
+                <input type="text" id="proteinsField" th:field="*{proteins}" />
+            </td>
+            <td>
+                <input type="text" id="fatsField" th:field="*{fats}" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save your ingredient." />
 </form>
+
 </body>
 </html>
