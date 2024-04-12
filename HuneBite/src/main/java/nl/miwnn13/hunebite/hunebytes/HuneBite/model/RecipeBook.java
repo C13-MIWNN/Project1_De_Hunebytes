@@ -42,4 +42,9 @@ public class RecipeBook {
     public void setRecipeBookName(String recipeBookName) {
         this.recipeBookName = recipeBookName;
     }
+
+    @Override
+    public String toString() {
+        return recipeBookName;
+    }
 }

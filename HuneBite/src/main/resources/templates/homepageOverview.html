@@ -43,7 +43,7 @@
     <div class="container-left">
     <h1>Menu</h1>
         <ul class="list-group" th:each="RecipeBook : ${RecipeBook}">
-            <td><a th:href="@{/recipe/detail/Boiled Egg}" th:text="${RecipeBook.getRecipeBookName()}"></a></td>
+            <td><a th:href="@{/recipeBook/detail/${RecipeBook}}" th:text="${RecipeBook.getRecipeBookName()}"></a></td>
 
         </ul>
 

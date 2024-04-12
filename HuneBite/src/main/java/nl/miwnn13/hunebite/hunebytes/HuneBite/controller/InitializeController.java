@@ -41,6 +41,7 @@ import java.util.Set;
 
 
         RecipeBook favorites = makeRecipeBook("Favorites");
+        RecipeBook favorites2 = makeRecipeBook("Favorites2");
 
         Recipe defaultRecipe1 = makeRecipe("Boiled Egg");
         Recipe defaultRecipe2 = makeRecipe("Big Boss Burger");
