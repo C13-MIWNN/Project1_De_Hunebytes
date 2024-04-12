@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.parent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: dimgray;
+}
+.containerCenter {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    width: 50%; /* Set width of the container */
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Set left and right margins to 'auto' */
+    background-color: white; /* Optional background color */
+    padding: 20px; /* Optional padding */
+    transform: translate(-50%, -50%);
+}
+.containerHead {
+    display: flex;
+    top: 0%;
+    width: 50%; /* Set width of the container */
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Set left and right margins to 'auto' */
+    background-color: forestgreen; /* Optional background color */
+    padding: 20px; /* Optional padding */
+}
+
+.container-left, .container-right {
+    position: absolute;
+    width: 25%; /* Set width of the container */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Set left and right margins to 'auto' */
+    background-color: white; /* Optional background color */
+    padding: 20px; /* Optional padding */
+}
+.container-left{
+    left: 0;
+}
+.container-right {
+    right: 0;
+}
+
+.search {
+    display: flex;
+    left: 50%;
+    align-items: center;
+
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

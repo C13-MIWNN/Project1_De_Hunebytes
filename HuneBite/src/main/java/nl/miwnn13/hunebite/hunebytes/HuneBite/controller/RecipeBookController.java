@@ -20,7 +20,6 @@ public class RecipeBookController {
 @GetMapping({"/"})
     public String showOverviewPage(Model model) {
         model.addAttribute("RecipeBook", recipeBookRepository.findAll());
-
         return "homepageOverview";
     }
 }
