@@ -9,6 +9,13 @@ body {
     bottom: 0;
     background-color: dimgray;
 }
+.button-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center; /* Align button in the center horizontally */
+    margin-bottom: 20px; /* Add some margin for spacing */
+}
 .containerCenter {
     position: absolute;
     left: 50%;
@@ -16,14 +23,15 @@ body {
     top: 50%;
     width: 50%; /* Set width of the container */
     justify-content: center;
-    align-items: center;
+    text-align: center;
     margin: 0 auto; /* Set left and right margins to 'auto' */
     background-color: white; /* Optional background color */
     padding: 20px; /* Optional padding */
     transform: translate(-50%, -50%);
 }
 .containerHead {
-    display: flex;
+    position: relative;
+    z-index: 1;
     top: 0%;
     width: 50%; /* Set width of the container */
     height: 100px;
@@ -52,15 +60,11 @@ body {
 }
 
 .search {
-    display: flex;
-    left: 50%;
-    align-items: center;
+    margin-top: 20px;
 
 }
 .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px;
 }
 
 .submit-button {

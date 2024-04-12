@@ -15,24 +15,29 @@
 <div class="parent">
 
     <div class="containerHead">
-        <h1>Contents of RecipeBook: <span th:text="${recipeBookToBeShown.recipeBookName}"></span></h1>
+        <h1>HuneBite</h1>
     </div>
 
     <div class="containerCenter">
-<!--        Main container of the page-->
+        <form th:action=" @{/recipebook/new}" method="post" th:object="${NewRecipeBook}">
+            <table>
+                <tr>
+                    <td><label for="nameField">New RecipeBook</label></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="nameField" th:field="*{recipeBookName}" />
+                    </td>
     </div>
 
     <div class="container-left">
-        <h1>Recipe's</h1>
-        <ol type="1">
-            <li th:each="${recipeBookToBeShown}" th:text="${recipeBookToBeShown.recipeBookName}"></li>
-        </ol>
-
+        <h1>Menu</h1>
 
 
     </div>
     <div class="container-right">
-        <h1>Nothing to Show Container</h1>
+        <h1>Possibly intresting content container</h1>
     </div>
 
 </div>

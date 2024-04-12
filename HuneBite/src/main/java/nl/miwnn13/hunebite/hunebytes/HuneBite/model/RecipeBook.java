@@ -3,6 +3,7 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,13 @@ public class RecipeBook {
     @Id @GeneratedValue
     private Long recipeBookId;
     private String recipeBookName;
-    //private ArrayList<Recipe> recipes;
+//    @ManyToMany
+//    private List<Recipe> recipes;
 
     public RecipeBook(Long recipeBookId, String recipeBookName) {
         this.recipeBookId = recipeBookId;
         this.recipeBookName = recipeBookName;
-        //this.recipes = new ArrayList<>();
+//        this.recipes = new ArrayList<>();
     }
 
     public RecipeBook() {
