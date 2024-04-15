@@ -16,16 +16,17 @@
 
     <div class="containerCenter">
         <!--        Main container of the page-->
-        <h1>Detail for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
+        <div>
+        <h1 class="header123">Details for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
 
-        <h2>Steps:</h2>
-        <ol type="1">
-            <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
-        </ol>
+            <h2 class="header123">Steps:</h2>
+            <ol id="recipeStepList" type="1">
+                <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
+            </ol>
 
-        <h2>Recipe description:</h2>
-        <p th:text="${recipeToBeShown.recipeDescription}">
-        </p>
+            <h2 class="header123">Recipe description:</h2>
+            <p id="recipeDescText" th:text="${recipeToBeShown.recipeDescription}"></p>
+        </div>
     </div>
 
     <div class="container-left">

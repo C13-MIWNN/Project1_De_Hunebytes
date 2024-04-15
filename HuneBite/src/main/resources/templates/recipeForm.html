@@ -19,52 +19,70 @@
 
     <div class="containerCenter">
         <!--        Main container of the page-->
-        <h1>Add new recipe</h1>
-        <form th:action="@{/recipe/new}" method="post" th:object="${recipe}">
-            <input type="hidden" th:field="*{recipeId}">
-            <table>
-                <tr>
-                    <td><label for="recipeTitleField">Title:</label></td>
-                </tr>
-                <tr>
-                    <td><input type="text" id="recipeTitleField" th:field="*{recipeTitle}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="recipeDescriptionField">Description:</label></td>
-                </tr>
-                <tr>
-                    <td><textarea id="recipeDescriptionField" th:field="*{recipeDescription}"></textarea></td>
-                </tr>
-            </table>
-            <table id="stepsTable">
-                <tr>
-                    <td><label for="recipeStepInput">Steps:</label></td>
-                </tr>
-                <tr th:each="step, index : *{recipeSteps}">
-                    <td><input type="text" id="recipeStepInput" th:field="*{recipeSteps[__${index.index}__]}"/></td>
-                </tr>
-            </table>
-            <div>
-                <button type="button" onclick="addStep()">Add step</button>
-            </div>
-            <div class="submit-button">
-                <button type="submit">Submit</button>
-            </div>
+        <div class="recipeFormDiv">
+            <h1>Add new recipe</h1>
+            <form th:action="@{/recipe/new}" method="post" th:object="${recipe}">
+                <input type="hidden" th:field="*{recipeId}">
+                <table class="recipeFormTable">
+                    <tr>
+                        <td><label class="formLabel" for="recipeTitleField">Title:</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="recipeTitleField" th:field="*{recipeTitle}"
+                                   size="77" placeholder="Write your recipe title here..."/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br/></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="recipeDescriptionField">Description:</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea id="recipeDescriptionField" th:field="*{recipeDescription}"
+                                      rows="4" cols="75" placeholder="Write about your recipe here...">
+                            </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <table id="stepsTable">
+                    <tr>
+                        <td><label class="formLabel" for="recipeStepInput">Recipe steps:</label></td>
+                    </tr>
+                    <tr th:each="step, index : *{recipeSteps}">
+                        <td><input type="text" id="recipeStepInput"
+                                   th:field="*{recipeSteps[__${index.index}__]}" size="77" />
+                        </td>
+                    </tr>
+                </table>
 
-        </form>
+                <div id="recipeStepButtonDiv">
+                    <button type="button" onclick="addStep()">Add step</button>
+                </div>
 
-        <script th:inline="javascript">
-            function addStep() {
-                var stepsTable = document.getElementById('stepsTable');
-                var newRow = stepsTable.insertRow(-1);
-                var cell = newRow.insertCell(0);
+                <div id="submitButton">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
 
-                var newInput = document.createElement('input');
-                newInput.setAttribute('type', 'text');
-                newInput.setAttribute('name', 'recipeSteps');
-                cell.appendChild(newInput);
-            }
-        </script>
+            <script th:inline="javascript">
+                function addStep() {
+                    var stepsTable = document.getElementById('stepsTable');
+                    var newRow = stepsTable.insertRow(-1);
+                    var cell = newRow.insertCell(0);
+
+                    var newInput = document.createElement('input');
+                    newInput.setAttribute('type', 'text');
+                    newInput.setAttribute('name', 'recipeSteps');
+                    newInput.setAttribute('size', '77')
+                    newInput.setAttribute('placeholder', 'Write a new recipe step here...')
+                    cell.appendChild(newInput);
+                }
+            </script>
+        </div>
     </div>
 
     <div class="container-left">
@@ -74,7 +92,6 @@
     <div class="container-right">
         <h1>Possibly interesting content container</h1>
     </div>
-
 </div>
 
 
