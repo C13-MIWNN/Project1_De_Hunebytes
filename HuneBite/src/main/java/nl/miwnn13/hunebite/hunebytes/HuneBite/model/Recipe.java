@@ -2,6 +2,8 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,9 +19,10 @@ public class Recipe {
     private String recipeTitle;
     private String recipeDescription;
     @ElementCollection @OrderColumn
-    private List<String> recipeSteps;
+    private List<String> recipeSteps = new ArrayList<>();
     @ManyToMany
     private Set<Ingredient> ingredients;
+
 
     public Long getRecipeId() {
         return recipeId;

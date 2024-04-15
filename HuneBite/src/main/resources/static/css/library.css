@@ -11,10 +11,10 @@ body {
 }
 .parent {
     position: fixed;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     background-color: dimgray;
 }
 .containerCenter {
@@ -80,3 +80,34 @@ body {
 .buttons {
     margin-top: 20px;
 }
+
+#submitButton {
+    display: flex;
+    position: absolute;
+    right: 4%;
+    bottom: 4%;
+}
+
+#stepsTable {
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#recipeStepButtonDiv {
+    margin-top: 2%;
+}
+
+#recipeStepList {
+    text-align: left;
+}
+
+#recipeDescText {
+    text-align: left;
+}
+
+.header123 {
+    text-align: center;
+}
+
+

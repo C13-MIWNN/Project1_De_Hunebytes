@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
-    <title>|Details for book: ${recipeToBeShown.recipeTitle}|</title>
+    <title>|Details for recipe: ${recipeToBeShown.recipeTitle}|</title>
 </head>
 <body>
+<div th:replace="~{fragments/general :: navbar}"></div>
 
-<div class="container">
-    <h1>Detail for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
 
-    <h2>Steps:</h2>
-    <ol type="1">
-        <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
-    </ol>
 
-    <h2>Recipe description:</h2>
-    <p th:text="${recipeToBeShown.recipeDescription}">
-    </p>
+<div class="parent">
+
+    <div class="containerHead">
+        <h1>HuneBite</h1>
+    </div>
+
+    <div class="containerCenter">
+        <!--        Main container of the page-->
+        <div>
+        <h1 class="header123">Details for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
+
+            <h2 class="header123">Steps:</h2>
+            <ol id="recipeStepList" type="1">
+                <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
+            </ol>
+
+            <h2 class="header123">Recipe description:</h2>
+            <p id="recipeDescText" th:text="${recipeToBeShown.recipeDescription}"></p>
+        </div>
+    </div>
+
+    <div class="container-left">
+        <h1>Menu</h1>
+
+
+    </div>
+    <div class="container-right">
+        <h1>Possibly interesting content container</h1>
+    </div>
+
 </div>
 </body>
 </html>
