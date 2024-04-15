@@ -8,29 +8,33 @@
 
 </head>
 <body>
-<div th:replace="~{fragments/general :: navbar}"></div>
-
 <div class="containerHead">
-    <h1>HuneBite</h1>
+    <div th:replace="~{fragments/general :: home}"></div>
 </div>
+
+
 <div class="parent">
     <div class="containerCenter">
     <table>
-        <td>
-        <h1>Search our Page</h1>
-        </td>
-        <td>
-            <div class="container">
-                <div class="search">
-                    <input type="text" placeholder="Search">
-                    <button>Search</button>
+        <tr>
+            <td>
+                <h1>Search our Page</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="container">
+                    <div class="search">
+                        <input type="text" placeholder="Search">
+                        <button>Search</button>
+                    </div>
+                    <div class="buttons">
+                        <a href="/recipe/new" class="btn btn-success">Make Recipe</a>
+                        <a href="/ingredient/new" class="btn btn-outline-success">Make Ingredient</a>
+                    </div>
                 </div>
-                <div class="buttons">
-                    <button><a href="/recipe/new" class="btn btn-success">Make Recipe</a></button>
-                    <button><a href="/ingredient/new" class="btn btn-success">Make Ingredient</a></button>
-                </div>
-            </div>
-        </td>
+            </td>
+        </tr>
     </table>
     </div>
 
@@ -40,12 +44,12 @@
             <li><a th:href="@{/recipeBook/detail/${RecipeBook.recipeBookName}}" th:text="${RecipeBook.recipeBookName}"></a></li>
         </ul>
         <div class="button-container">
-            <a href="recipebook/new" class="btn btn-outline-success">Make new Recipebook</a>
+            <a href="recipebook/new" class="btn btn-outline-success">Add Recipebook</a>
         </div>
     </div>
 
     <div class="container-right">
-    <h1>Possibly intresting content container</h1>
+    <h1>Possibly interesting content container</h1>
     </div>
 </div>
 
