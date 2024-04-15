@@ -3,6 +3,7 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
@@ -98,7 +99,7 @@ import java.util.Set;
         Ingredient defaultingredient = new Ingredient();
         defaultingredient.setIngredientName(ingredient);
         defaultingredient.setIngredientDescription(makeIngredientDescription());
-        defaultingredient.setUnitType(makeIngredientType());
+        //defaultingredient.setUnitType(makeIngredientType());
         defaultingredient.setCalories(makeIngredientCalories());
         defaultingredient.setFats(makeIngredientFats());
         defaultingredient.setProteins(makeIngredientProteins());
@@ -110,9 +111,10 @@ import java.util.Set;
         return "Is yummy and makes you fat.";
     }
 
-    private String makeIngredientType() {
-        return "gram";
-    }
+//    private UnitType makeIngredientType() {
+//        return UnitType.GRAM;
+//    }
+
     private double makeIngredientCalories() {
         return 1000;
     }
