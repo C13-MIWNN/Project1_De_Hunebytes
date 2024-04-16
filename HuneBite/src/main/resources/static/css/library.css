@@ -81,6 +81,12 @@ body {
     text-align: center;
 }
 
+#ingredientTable {
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+}
+
 #recipeStepButtonDiv {
     margin-top: 2%;
 }
