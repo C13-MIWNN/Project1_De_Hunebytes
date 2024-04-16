@@ -6,12 +6,12 @@
 
 </head>
 <body>
-<form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
+<form id="ingredientForm" class="form-container" th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
     <table>
         <tr>
             <td><label for="nameField">Name</label></td>
             <td><label for="descriptionField">Description</label></td>
-            <td><label for="unitTypeField">Unit Type</label></td>
+            <td><label for="unitTypeDropDown">Unit Type</label></td>
             <td><label for="caloriesField">Calories</label></td>
             <td><label for="proteinsField">Proteins</label></td>
             <td><label for="fatsField">Fats</label></td>
@@ -24,9 +24,13 @@
                 <input type="text" id="descriptionField" th:field="*{ingredientDescription}" />
             </td>
             <td>
-                <input type="text" id="unitTypeField" th:field="*{unitType}" />
-            </td>
             <td>
+            <select id="unitTypeDropDown" name="unitType">
+            <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
+                    th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}"></option>
+            </select>
+        </td>
+         <td>
                 <input type="text" id="caloriesField" th:field="*{calories}" />
             </td>
             <td>

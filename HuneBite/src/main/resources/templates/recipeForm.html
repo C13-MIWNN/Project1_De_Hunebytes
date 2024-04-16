@@ -30,7 +30,7 @@
                     <tr>
                         <td>
                             <input type="text" id="recipeTitleField" th:field="*{recipeTitle}"
-                                   size="77" placeholder="Write your recipe title here..."/>
+                                   size="76" placeholder="Write your recipe title here..."/>
                         </td>
                     </tr>
                     <tr>
@@ -62,12 +62,10 @@
                 <div id="recipeStepButtonDiv">
                     <button type="button" onclick="addStep()" class="btn btn-outline-success">Add step</button>
                 </div>
+
                 <div id="submitButton">
                     <button type="submit" class="btn btn-outline-success">Submit</button>
                 </div>
-
-
-
             </form>
 
             <script th:inline="javascript">
@@ -92,11 +90,8 @@
     </div>
 
     <div class="container-right">
-        <h1>Possibly interesting content container</h1>
     </div>
 </div>
-
-
 </body>
 </html>
 

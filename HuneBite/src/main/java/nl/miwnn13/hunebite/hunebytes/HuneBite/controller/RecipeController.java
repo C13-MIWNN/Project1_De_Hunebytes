@@ -2,6 +2,8 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
 
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeIngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,15 @@ import java.util.Optional;
 @Controller
 public class RecipeController {
     private final RecipeRepository recipeRepository;
+    private final IngredientRepository ingredientRepository;
+    private final RecipeIngredientRepository recipeIngredientRepository;
 
-    public RecipeController(RecipeRepository recipeRepository) {
+    public RecipeController(RecipeRepository recipeRepository,
+                            IngredientRepository ingredientRepository,
+                            RecipeIngredientRepository recipeIngredientRepository) {
         this.recipeRepository = recipeRepository;
+        this.ingredientRepository = ingredientRepository;
+        this.recipeIngredientRepository = recipeIngredientRepository;
     }
 
     @GetMapping("/recipe/detail/{recipeTitle}")
@@ -36,12 +44,14 @@ public class RecipeController {
         }
 
         model.addAttribute("recipeToBeShown", recipe.get());
+        model.addAttribute("allRecipeIngredients", recipeIngredientRepository.findAll());
         return "recipeDetail";
     }
 
     @GetMapping("/recipe/new")
     private String showRecipeForm(Model model) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("allIngredients", ingredientRepository.findAll());
 
 
         return "recipeForm";
