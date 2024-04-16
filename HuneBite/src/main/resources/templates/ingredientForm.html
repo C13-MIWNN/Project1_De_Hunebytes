@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
+<head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
     <meta charset="UTF-8">
     <title>Add Ingredient here</title>
-
 </head>
+
+
 <body>
-<form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
-    <table>
-        <tr>
-            <td><label for="nameField">Name</label></td>
-            <td><label for="descriptionField">Description</label></td>
-            <td><label for="unitTypeDropDown">Unit Type</label></td>
-            <td><label for="caloriesField">Calories</label></td>
-            <td><label for="proteinsField">Proteins</label></td>
-            <td><label for="fatsField">Fats</label></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" id="nameField" th:field="*{ingredientName}" />
-            </td>
-            <td>
-                <input type="text" id="descriptionField" th:field="*{ingredientDescription}" />
-            </td>
-            <td>
-            <td>
-            <select id="unitTypeDropDown" name="unitType">
-            <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
-                    th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}"></option>
-            </select>
-        </td>
-         <td>
-                <input type="text" id="caloriesField" th:field="*{calories}" />
-            </td>
-            <td>
-                <input type="text" id="proteinsField" th:field="*{proteins}" />
-            </td>
-            <td>
-                <input type="text" id="fatsField" th:field="*{fats}" />
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="Save your ingredient." />
-</form>
+<div th:replace="~{fragments/general :: navbar}"></div>
+
+<div class="parent">
+
+    <div class="containerHead">
+        <h1>HuneBite</h1>
+    </div>
+
+    <div class="containerCenter">
+
+        <form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
+            <table>
+                <tr>
+                    <td><label for="nameField">Name</label></td>
+                    <td><label for="descriptionField">Description</label></td>
+                    </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="nameField" th:field="*{ingredientName}" />
+                    </td>
+                    <td>
+                        <input type="text" id="descriptionField" th:field="*{ingredientDescription}" />
+                    </td>
+                    </tr>
+                <tr>
+                    <td><label for="unitTypeDropDown">Unit Type</label></td>
+                    <td><label for="caloriesField">Calories</label></td>
+                 </tr>
+                <tr>
+                        <td>
+                        <select id="unitTypeDropDown" name="unitType">
+                            <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
+                                    th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" id="caloriesField" th:field="*{calories}" />
+                    </td>
+                    </tr>
+                <tr>
+                    <td><label for="proteinsField">Proteins</label></td>
+                    <td><label for="fatsField">Fats</label></td>
+                    </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="proteinsField" th:field="*{proteins}" />
+                    </td>
+                    <td>
+                        <input type="text" id="fatsField" th:field="*{fats}" />
+                    </td>
+
+                    </tr>
+            </table>
+            <input type="submit" value="Save your ingredient." />
+        </form>
+
+    </div>
+
+    <div class="container-left">
+        <h1>Menu</h1>
+
+    </div>
+    <div class="container-right">
+        <h1>Possibly interesting content container</h1>
+    </div>
+
+</div>
 
 </body>
 </html>
