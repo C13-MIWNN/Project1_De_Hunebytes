@@ -5,8 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Justin Lamberts
@@ -17,13 +17,13 @@ public class RecipeBook {
     @Id @GeneratedValue
     private Long recipeBookId;
     private String recipeBookName;
-//    @ManyToMany
-//    private List<Recipe> recipes;
+    @ManyToMany
+    private Set<Recipe> recipesSet;
 
     public RecipeBook(Long recipeBookId, String recipeBookName) {
         this.recipeBookId = recipeBookId;
         this.recipeBookName = recipeBookName;
-//        this.recipes = new ArrayList<>();
+        this.recipesSet = new HashSet<>();
     }
 
     public RecipeBook() {
@@ -43,6 +43,14 @@ public class RecipeBook {
 
     public void setRecipeBookName(String recipeBookName) {
         this.recipeBookName = recipeBookName;
+    }
+
+    public Set<Recipe> getRecipesSet() {
+        return recipesSet;
+    }
+
+    public void setRecipesSet(Set<Recipe> recipes) {
+        this.recipesSet = recipes;
     }
 
     @Override

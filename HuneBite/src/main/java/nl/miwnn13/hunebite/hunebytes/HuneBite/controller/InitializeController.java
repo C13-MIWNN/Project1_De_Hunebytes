@@ -49,8 +49,7 @@ import java.util.Set;
     private String initializeDB() {
 
 
-        RecipeBook favorites = makeRecipeBook("Favorites");
-        RecipeBook favorites2 = makeRecipeBook("Favorites2");
+
 
         Recipe defaultRecipe1 = makeRecipe("Boiled Egg");
         Recipe defaultRecipe2 = makeRecipe("Big Boss Burger");
@@ -64,17 +63,20 @@ import java.util.Set;
         Ingredient defaultIngredient3 = makeIngredient("Thyme");
         Ingredient defaultIngredient4 = makeIngredient("Rice");
 
+        RecipeBook favorites = makeRecipeBook("Favorites", defaultRecipe1);
+
         RecipeIngredient recipeIngredient1 = makeRecipeIngredient(defaultRecipe1, defaultIngredient, 2);
 
         return "redirect:/";
     }
 
-    private RecipeBook makeRecipeBook(String title) {
+    private RecipeBook makeRecipeBook(String Name, Recipe recipe) {
         RecipeBook recipeBook = new RecipeBook();
-        recipeBook.setRecipeBookName(title);
+        recipeBook.setRecipeBookName(Name);
 
-        Set<RecipeBook> recipeBookSet = new HashSet<>();
-        recipeBookSet.add(recipeBook);
+        Set<Recipe> recipeSet = new HashSet<>();
+        recipeSet.add(recipe);
+        recipeBook.setRecipesSet(recipeSet);
         recipeBookRepository.save(recipeBook);
         return recipeBook;
     }
