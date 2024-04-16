@@ -18,15 +18,19 @@ body {
     bottom: 0;
     background-color: dimgray;
 }
-
+.button-container {
+    margin-top: 10px;
+}
 .containerCenter {
     display: flex;
     position: fixed;
-    top: 100px;
+    top: 120px;
     left: 20%;
     right: 20%;
     bottom: 0;
     height: 100%;
+    border-spacing: 10px;
+    margin-bottom: 20px;
     justify-content: center;
     align-content: center;
     text-align: center;
@@ -71,26 +75,30 @@ body {
 .container {
     justify-content: center;
     align-content: center;
-    height: 100px;
-    width: 400px;
+    margin-bottom: 20px;
+
 }
 
 .search {
     margin-top: 20px;
 
 }
-.buttons {
-    margin-top: 20px;
-}
 
 #submitButton {
+    margin-top: 10px;
     display: flex;
-    position: absolute;
+    justify-content: center;
     right: 4%;
     bottom: 4%;
 }
 
 #stepsTable {
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#ingredientTable {
     display: inline-flex;
     justify-content: center;
     text-align: center;

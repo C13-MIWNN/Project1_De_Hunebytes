@@ -3,6 +3,10 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Mareth Westhoff
@@ -17,6 +21,8 @@ public class Ingredient {
     private String ingredientDescription;
     private UnitType unitType;
     private double unitValue;
+    @OneToMany(mappedBy = "ingredient")
+    private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
     private double calories;
     private double proteins;
@@ -76,5 +82,13 @@ public class Ingredient {
 
     public Long getIngredientId() {
         return ingredientId;
+    }
+
+    public Set<RecipeIngredient> getRecipeIngredientSet() {
+        return recipeIngredientSet;
+    }
+
+    public void setRecipeIngredientSet(Set<RecipeIngredient> recipeIngredientSet) {
+        this.recipeIngredientSet = recipeIngredientSet;
     }
 }

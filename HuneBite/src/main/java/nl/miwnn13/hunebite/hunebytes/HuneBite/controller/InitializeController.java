@@ -8,6 +8,8 @@ import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeIngredient;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,12 +30,18 @@ import java.util.Set;
         private final IngredientRepository ingredientRepository;
         private final RecipeRepository recipeRepository;
         private final TagRepository tagRepository;
+        private final RecipeIngredientRepository recipeIngredientRepository;
 
-    public InitializeController(RecipeBookRepository recipeBookRepository, IngredientRepository ingredientRepository, RecipeRepository recipeRepository, TagRepository tagRepository) {
+    public InitializeController(RecipeBookRepository recipeBookRepository,
+                                IngredientRepository ingredientRepository,
+                                RecipeRepository recipeRepository,
+                                TagRepository tagRepository,
+                                RecipeIngredientRepository recipeIngredientRepository) {
         this.recipeBookRepository = recipeBookRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
         this.tagRepository = tagRepository;
+        this.recipeIngredientRepository = recipeIngredientRepository;
     }
 
 
@@ -55,6 +63,8 @@ import java.util.Set;
         Ingredient defaultIngredient2 = makeIngredient("Garlic");
         Ingredient defaultIngredient3 = makeIngredient("Thyme");
         Ingredient defaultIngredient4 = makeIngredient("Rice");
+
+        RecipeIngredient recipeIngredient1 = makeRecipeIngredient(defaultRecipe1, defaultIngredient, 2);
 
         return "redirect:/";
     }
@@ -93,6 +103,18 @@ import java.util.Set;
 
     private String makeRecipeDescription() {
         return "*Insert life story and also a little bit about the actual recipe*";
+    }
+
+    private RecipeIngredient makeRecipeIngredient(Recipe recipe, Ingredient ingredient, int amount) {
+        RecipeIngredient recipeIngredient = new RecipeIngredient();
+
+        recipeIngredient.setRecipe(recipe);
+        recipeIngredient.setIngredient(ingredient);
+        recipeIngredient.setIngredientAmount(amount);
+
+        recipeIngredientRepository.save(recipeIngredient);
+
+        return recipeIngredient;
     }
 
     private Ingredient makeIngredient(String ingredient) {

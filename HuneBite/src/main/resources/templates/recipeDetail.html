@@ -11,7 +11,7 @@
 <div class="parent">
 
     <div class="containerHead">
-        <h1>HuneBite</h1>
+        <div th:replace="~{fragments/general :: home}"></div>
     </div>
 
     <div class="containerCenter">
@@ -35,7 +35,12 @@
 
     </div>
     <div class="container-right">
-        <h1>Possibly interesting content container</h1>
+        <ul>
+            <li th:each="ingredient : ${allRecipeIngredients}"
+                th:text="${ingredient.ingredientAmount} + ' ' +
+                ${ingredient.ingredient.ingredientName}">
+            </li>
+        </ul>
     </div>
 
 </div>

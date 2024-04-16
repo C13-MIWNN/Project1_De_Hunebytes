@@ -14,7 +14,7 @@
 <div class="parent">
 
     <div class="containerHead">
-        <h1>HuneBite</h1>
+        <div th:replace="~{fragments/general :: home}"></div>
     </div>
 
     <div class="containerCenter">
@@ -30,7 +30,7 @@
                     <tr>
                         <td>
                             <input type="text" id="recipeTitleField" th:field="*{recipeTitle}"
-                                   size="77" placeholder="Write your recipe title here..."/>
+                                   size="76" placeholder="Write your recipe title here..."/>
                         </td>
                     </tr>
                     <tr>
@@ -60,11 +60,11 @@
                 </table>
 
                 <div id="recipeStepButtonDiv">
-                    <button type="button" onclick="addStep()">Add step</button>
+                    <button type="button" onclick="addStep()" class="btn btn-outline-success">Add step</button>
                 </div>
 
                 <div id="submitButton">
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
                 </div>
             </form>
 
@@ -90,11 +90,8 @@
     </div>
 
     <div class="container-right">
-        <h1>Possibly interesting content container</h1>
     </div>
 </div>
-
-
 </body>
 </html>
 

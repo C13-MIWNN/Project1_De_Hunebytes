@@ -20,8 +20,8 @@ public class Recipe {
     private String recipeDescription;
     @ElementCollection @OrderColumn
     private List<String> recipeSteps = new ArrayList<>();
-    @ManyToMany
-    private Set<Ingredient> ingredients;
+    @OneToMany(mappedBy = "recipe")
+    private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
 
     public Long getRecipeId() {
@@ -47,7 +47,6 @@ public class Recipe {
     public void setRecipeDescription(String recipeDescription) {
         this.recipeDescription = recipeDescription;
     }
-
     public List<String> getRecipeSteps() {
         return recipeSteps;
     }
@@ -56,11 +55,11 @@ public class Recipe {
         this.recipeSteps = recipeSteps;
     }
 
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
+    public Set<RecipeIngredient> getRecipeIngredientSet() {
+        return recipeIngredientSet;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public void setRecipeIngredientSet(Set<RecipeIngredient> recipeIngredientSet) {
+        this.recipeIngredientSet = recipeIngredientSet;
     }
 }
