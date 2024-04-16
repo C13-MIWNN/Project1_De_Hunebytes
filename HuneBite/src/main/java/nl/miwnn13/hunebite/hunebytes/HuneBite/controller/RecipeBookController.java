@@ -31,9 +31,31 @@ public class RecipeBookController {
         model.addAttribute("allRecipeBooks", recipeBookRepository.findAll());
         return "homepageOverview";
     }
-    @GetMapping("/recipeBook/detail/{SpecificRecipeBook}")
-    private String showRecipeDetail(@PathVariable("SpecificRecipeBook") String SpecificRecipeBook, Model model) {
-        Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(SpecificRecipeBook);
+
+    @GetMapping("/recipebook/new")
+    private String showIngredientForm(Model model) {
+        model.addAttribute("NewRecipeBook", new RecipeBook());
+        return "RecipeBookForm";
+    }
+
+    @PostMapping("/recipebook/new")
+    private String addRecipeBook(@ModelAttribute("NewRecipeBook") RecipeBook recipeBookToBeSaved, BindingResult result) {
+        if (recipeBookToBeSaved.getRecipeBookId() == null
+                && recipeBookRepository.findByRecipeBookName(recipeBookToBeSaved.getRecipeBookName()).isPresent()) {
+            return "redirect:/recipebook/new";
+        }
+
+        if (!result.hasErrors()) {
+            recipeBookRepository.save(recipeBookToBeSaved);
+        }
+
+        String recipeBookName = recipeBookToBeSaved.getRecipeBookName();
+
+        return "redirect:/recipebook/detail/" + recipeBookName;
+    }
+    @GetMapping("/recipebook/detail/{RecipeBook}")
+    private String showRecipeBookDetail(@PathVariable("RecipeBook") String RecipeBook, Model model) {
+        Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(RecipeBook);
 
         if (recipeBook.isEmpty()) {
             return "redirect:/";
@@ -42,21 +64,5 @@ public class RecipeBookController {
         model.addAttribute("recipeBookToBeShown", recipeBook.get());
         return "RecipeBookOverviewPage";
     }
-    @GetMapping("/recipebook/new")
-    private String showIngredientForm(Model model) {
-        model.addAttribute("NewRecipeBook", new RecipeBook());
-        return "RecipeBookForm";
-    }
-
-    @PostMapping("/recipebook/new")
-    private String AddNewIngredient(@ModelAttribute("recipeBook")
-                                    RecipeBook recipeBook, BindingResult recipeBookResult) {
-
-        if (!recipeBookResult.hasErrors()) {
-            recipeBookRepository.save(recipeBook);
-        }
-        return "redirect:/";
-    }
-
 }
  
