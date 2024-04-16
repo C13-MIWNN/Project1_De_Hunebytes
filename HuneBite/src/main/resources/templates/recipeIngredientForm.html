@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
-    <title>|Details for recipe: ${recipeToBeShown.recipeTitle}|</title>
+    <title>|Add ingredients to: ${recipeToAddTo.recipeTitle}|</title>
 </head>
+
 <body>
 <div th:replace="~{fragments/general :: navbar}"></div>
 
@@ -15,15 +16,17 @@
     <div class="containerCenter">
         <!--        Main container of the page-->
         <div>
-        <h1 class="header123">Details for recipe: <span th:text="${recipeToBeShown.recipeTitle}"></span></h1>
+            <h1 class="header123">Add ingredients to:
+                <span th:text="${recipeToAddTo.recipeTitle}"></span>
+            </h1>
 
             <h2 class="header123">Steps:</h2>
             <ol id="recipeStepList" type="1">
-                <li th:each="step : ${recipeToBeShown.recipeSteps}" th:text="${step}"></li>
+                <li th:each="step : ${recipeToAddTo.recipeSteps}" th:text="${step}"></li>
             </ol>
 
             <h2 class="header123">Recipe description:</h2>
-            <p id="recipeDescText" th:text="${recipeToBeShown.recipeDescription}"></p>
+            <p id="recipeDescText" th:text="${recipeToAddTo.recipeDescription}"></p>
         </div>
     </div>
 
@@ -34,9 +37,9 @@
     </div>
     <div class="container-right">
         <ul>
-            <li th:each="ingredient : ${allRecipeIngredients}"
-                th:text="${ingredient.ingredientAmount} + ' ' +
-                ${ingredient.ingredient.ingredientName}">
+            <li th:each="ingredient : ${allIngredients}"
+                th:text="${ingredient.unitType} + ' ' +
+                ${ingredient.ingredientName}">
             </li>
         </ul>
     </div>
