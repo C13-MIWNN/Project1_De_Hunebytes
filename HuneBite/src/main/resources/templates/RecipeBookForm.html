@@ -13,7 +13,7 @@
 <div class="parent">
 
     <div class="containerHead">
-        <h1>HuneBite</h1>
+        <div th:replace="~{fragments/general :: home}"></div>
     </div>
 
     <div class="containerCenter">
@@ -26,7 +26,13 @@
                 <tr>
                     <td>
                         <input type="text" id="nameField" th:field="*{recipeBookName}" />
+                        <div class="button-container">
+                            <button type="submit" class="btn btn-outline-success">Add Recipebook</button>
+                        </div>
                     </td>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <div class="container-left">
