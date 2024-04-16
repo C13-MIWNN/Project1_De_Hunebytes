@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 import java.util.Optional;
 
 /**
@@ -21,9 +22,12 @@ import java.util.Optional;
 public class IngredientController {
     private final IngredientRepository ingredientRepository;
 
+
     public IngredientController(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
+
+
 // voor je overzicht
     @GetMapping("/ingredient")
     private String ShowAllIngredients(Model model) {
