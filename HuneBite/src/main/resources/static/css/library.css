@@ -59,7 +59,7 @@ body {
     position: fixed;
     width: 20%;
     height: 100%;
-    top: 100px;
+    top: 120px;
     justify-content: center;
     align-items: center;
     margin: 0 auto; /* Set left and right margins to 'auto' */
@@ -73,14 +73,16 @@ body {
     right: 0;
 }
 .container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
     margin-bottom: 20px;
 
 }
 
 .search {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -120,4 +122,10 @@ body {
     text-align: center;
 }
 
-
+.list-group-item .badge {
+    position: absolute;
+    color: darkblue;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}

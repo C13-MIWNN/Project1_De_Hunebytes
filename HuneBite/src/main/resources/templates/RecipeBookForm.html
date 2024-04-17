@@ -18,20 +18,23 @@
 
     <div class="containerCenter">
         <form th:action=" @{/recipebook/new}" method="post" th:object="${NewRecipeBook}">
-            <table>
-                <tr>
-                    <td><label for="nameField">New RecipeBook</label></td>
 
-                </tr>
-                <tr>
-                    <td>
+                    <label for="nameField">New RecipeBook</label>
+
+
                         <input type="text" id="nameField" th:field="*{recipeBookName}"/>
-                        <div class="button-container">
-                            <button type="submit" class="btn btn-outline-success">Add Recipebook</button>
+
+                        <div>
+                                <label for="recipeToBeSaved">Recipe's</label>
+                                <select th:field="*{recipesSet}" id="recipeToBeSaved" name="addRecipeToBook" multiple>
+                                    <option th:each="recipe : ${allRecipes}"
+                                            th:value="${recipe.recipeId}"
+                                            th:text="${recipe.recipeTitle}">
+                                    </option>
+                                </select>
+                                <button type="submit" value="addRecipeToBook" class="btn btn-outline-success">
+                                    Create Recipebook</button>
                         </div>
-                    </td>
-                </tr>
-            </table>
         </form>
     </div>
 
