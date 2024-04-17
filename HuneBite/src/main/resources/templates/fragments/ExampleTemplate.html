@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="/css/library.css" />
-    <title>Home</title>
+    <title>Choose titel</title>
 
 </head>
 <body>
@@ -14,8 +14,13 @@
 
 <div class="parent">
 
+<!--    niet meer up to date?-->
+<!--    <div class="containerHead">-->
+<!--        <h1>HuneBite</h1>-->
+<!--    </div>-->
+
     <div class="containerHead">
-        <h1>HuneBite</h1>
+        <div th:replace="~{fragments/general :: home}"></div>
     </div>
 
     <div class="containerCenter">
