@@ -1,10 +1,11 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
-
+import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeIngredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeIngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,7 @@ import java.util.Optional;
 /**
  * Author: Tim Bulder
  * <p>
- * purpose for class
+ * Handles everything to do with the intermediate table between Recipes and Ingredients
  **/
 @Controller
 public class RecipeIngredientController {
@@ -61,17 +62,34 @@ public class RecipeIngredientController {
             return "redirect:/";
         }
 
-        if (recipeIngredientToBeSaved.getRecipeIngredientId() == null
-                && recipeRepository.findByRecipeTitle
-                (recipeIngredientToBeSaved.getRecipe().getRecipeTitle()).isPresent()) {
+        recipeIngredientToBeSaved.setRecipe(recipe.get());
 
-            return "redirect:/recipe/new";
+        Recipe thisRecipe = recipeIngredientToBeSaved.getRecipe();
+        Ingredient thisIngredient = recipeIngredientToBeSaved.getIngredient();
+
+        if (recipeIngredientRepository.findByRecipeAndIngredient(thisRecipe, thisIngredient).isPresent()) {
+            RecipeIngredient recipeIngredient = recipeIngredientRepository.
+                    findByRecipeAndIngredient(thisRecipe, thisIngredient).get();
+
+            recipeIngredient.setIngredientAmount(recipeIngredientToBeSaved.getIngredientAmount());
+
+            recipeIngredientRepository.save(recipeIngredient);
+
+            StringBuilder urlString = new StringBuilder();
+            urlString.append("redirect:/recipe/").append(recipeTitle).append("/add/ingredients");
+
+            return urlString.toString();
         }
 
         if (!result.hasErrors()) {
             recipeIngredientRepository.save(recipeIngredientToBeSaved);
+        } else {
+            return "redirect:/";
         }
 
-        return "redirect:/recipe/detail/" + recipeTitle;
+        StringBuilder urlString = new StringBuilder();
+        urlString.append("redirect:/recipe/").append(recipeTitle).append("/add/ingredients");
+
+        return urlString.toString();
     }
 }

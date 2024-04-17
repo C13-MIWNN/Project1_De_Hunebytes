@@ -22,15 +22,14 @@
             </tr>
             <tr th:each="ingredient : ${allIngredients}">
                 <td><a th:href="@{/ingredient/detail/{ingredientName}(ingredientName = ${ingredient.ingredientName})}"
-                       th:text="${ingredient.ingredientName}"></a></td>
+                       th:text="${ingredient.ingredientName}"></a>
+                </td>
             </tr>
         </table>
         <p>
             <a th:href="@{/ingredient/new}">Add a new ingredient.</a>
         </p>
-
-
-</div>
+    </div>
     <div class="container-left">
         <h1>Menu</h1>
 
@@ -40,8 +39,6 @@
     </div>
 
 </div>
-
-
 </body>
 </html>
 
