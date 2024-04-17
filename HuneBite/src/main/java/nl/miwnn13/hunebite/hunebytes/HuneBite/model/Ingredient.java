@@ -48,6 +48,7 @@ public class Ingredient {
         return unitType;
     }
 
+
     public void setUnitType(UnitType unitType) {
         this.unitType = unitType;
     }

@@ -30,6 +30,7 @@ body {
     bottom: 0;
     height: 100%;
     border-spacing: 10px;
+    /*border-collapse: collapse;*/
     margin-bottom: 20px;
     justify-content: center;
     align-content: center;
@@ -119,5 +120,4 @@ body {
 .header123 {
     text-align: center;
 }
-
 

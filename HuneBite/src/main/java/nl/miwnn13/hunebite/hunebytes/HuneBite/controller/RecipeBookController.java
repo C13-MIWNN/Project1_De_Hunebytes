@@ -4,6 +4,7 @@ import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +22,11 @@ import java.util.Optional;
 @Controller
 public class RecipeBookController {
     private final RecipeBookRepository recipeBookRepository;
+    private final RecipeRepository recipeRepository;
 
-    public RecipeBookController(RecipeBookRepository recipeBookRepository) {
+    public RecipeBookController(RecipeBookRepository recipeBookRepository, RecipeRepository recipeRepository) {
         this.recipeBookRepository = recipeBookRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @GetMapping({"/"})
@@ -53,6 +56,7 @@ public class RecipeBookController {
 
         return "redirect:/recipebook/detail/" + recipeBookName;
     }
+
     @GetMapping("/recipebook/detail/{RecipeBook}")
     private String showRecipeBookDetail(@PathVariable("RecipeBook") String RecipeBook, Model model) {
         Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(RecipeBook);
@@ -61,8 +65,21 @@ public class RecipeBookController {
             return "redirect:/";
         }
 
-        model.addAttribute("recipeBookToBeShown", recipeBook.get());
+
+
         return "RecipeBookOverviewPage";
     }
+
+    @PostMapping("/recipebook/detail/{RecipeBook}")
+    private String addRecipeBookDetail(@PathVariable("RecipeBook") String RecipeBook, Model model) {
+        Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(RecipeBook);
+        if (recipeBook.isEmpty()) {
+            return "redirect:/";
+        }
+
+
+        return "RecipeBookOverviewPage";
+    }
+
 }
  

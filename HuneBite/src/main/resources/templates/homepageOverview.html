@@ -41,7 +41,7 @@
     <div class="container-left">
         <h1>Menu</h1>
         <ul class="list-group" th:each="RecipeBook : ${allRecipeBooks}">
-            <li><a th:href="@{/recipeBook/detail/${RecipeBook.recipeBookName}}" th:text="${RecipeBook.recipeBookName}"></a></li>
+            <li><a th:href="@{'/recipebook/detail/' + ${RecipeBook.recipeBookName}}" th:text="${RecipeBook.recipeBookName}"></a></li>
         </ul>
         <div class="button-container">
             <a href="recipebook/new" class="btn btn-outline-success">Add Recipebook</a>
