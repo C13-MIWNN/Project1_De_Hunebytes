@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * Author: Tim Bulder
  * <p>
- * purpose for class
+ * Handles everything to do with the intermediate table between Recipe's and Ingredients
  **/
 @Entity
 @Table(uniqueConstraints =
@@ -13,19 +13,19 @@ import jakarta.persistence.*;
                 columnNames = { "recipe_recipe_id", "ingredient_ingredient_id" }) })
 public class RecipeIngredient {
     @Id @GeneratedValue
-    private Long recipeIngredientAmountId;
+    private Long recipeIngredientId;
     @ManyToOne
     private Recipe recipe;
     @ManyToOne
     private Ingredient ingredient;
     private int ingredientAmount;
 
-    public Long getRecipeIngredientAmountId() {
-        return recipeIngredientAmountId;
+    public Long getRecipeIngredientId() {
+        return recipeIngredientId;
     }
 
-    public void setRecipeIngredientAmountId(Long recipeIngredientAmountId) {
-        this.recipeIngredientAmountId = recipeIngredientAmountId;
+    public void setRecipeIngredientId(Long recipeIngredientAmountId) {
+        this.recipeIngredientId = recipeIngredientAmountId;
     }
 
     public Recipe getRecipe() {

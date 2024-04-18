@@ -64,6 +64,7 @@ public class IngredientController {
         if (ingredient.isEmpty()) {
             return "redirect:/";
         }
+
         model.addAttribute("ingredientToBeShown", ingredient.get());
         return "ingredientDetail";
     }

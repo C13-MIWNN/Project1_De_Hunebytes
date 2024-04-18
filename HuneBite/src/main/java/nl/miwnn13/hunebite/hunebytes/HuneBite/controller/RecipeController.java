@@ -69,7 +69,10 @@ public class RecipeController {
         }
 
         String recipeTitle = recipeToBeSaved.getRecipeTitle();
+        StringBuilder urlString = new StringBuilder();
 
-        return "redirect:/recipe/detail/" + recipeTitle;
+        urlString.append("redirect:/recipe/").append(recipeTitle).append("/add/ingredients");
+
+        return urlString.toString();
     }
 }
