@@ -16,6 +16,7 @@
     <div class="containerCenter">
 
         <form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
+            <input type="hidden" th:field="*{ingredientId}">
             <table>
                 <tr>
                     <td><label for="nameField">Name</label></td>
