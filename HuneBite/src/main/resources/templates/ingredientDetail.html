@@ -10,7 +10,7 @@
 <div class="parent">
 
     <div class="containerHead">
-        <h1>HuneBite</h1>
+        <div th:replace="~{fragments/general :: home}"></div>
     </div>
 
 <div class="containerCenter">
@@ -19,24 +19,32 @@
     <h1>Details of Ingredient: <span th:text="${ingredientToBeShown.ingredientName}"></span></h1>
         <ul>
     <li>Description: <span th:text="${ingredientToBeShown.ingredientDescription}"></span> </li>
-    <li>Type <span th:text="${ingredientToBeShown.unitType.getDisplayOfUnit()}"></span></li>
+    <li>Type: <span th:text="${ingredientToBeShown.unitType.getDisplayOfUnit()}"></span></li>
     <li>Calories: <span th:text="${ingredientToBeShown.calories}"></span></li>
     <li>Proteins:<span th:text="${ingredientToBeShown.proteins}"></span></li>
     <li>Fats:<span th:text="${ingredientToBeShown.fats}"></span></li>
         </ul>
     </div>
 
-</div>
+    <div>
+       <ul>
+           <li><a th:href="@{/ingredient/edit/{ingredientName}(ingredientName = ${ingredientToBeShown.ingredientName})}">Edit Ingredient</a></li>
+       </ul>
+    </div>
 
+
+</div>
     <div class="container-left">
         <h1>Menu</h1>
 
     </div>
     <div class="container-right">
-        <h1>Possibly interesting content container</h1>
+
     </div>
 </div>
 
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
 </body>
 </html>
 

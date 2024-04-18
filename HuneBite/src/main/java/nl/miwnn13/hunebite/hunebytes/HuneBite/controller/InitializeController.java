@@ -123,7 +123,7 @@ import java.util.Set;
         Ingredient defaultingredient = new Ingredient();
         defaultingredient.setIngredientName(ingredient);
         defaultingredient.setIngredientDescription(makeIngredientDescription());
-        //defaultingredient.setUnitType(makeIngredientType());
+        defaultingredient.setUnitType(makeIngredientType());
         defaultingredient.setCalories(makeIngredientCalories());
         defaultingredient.setFats(makeIngredientFats());
         defaultingredient.setProteins(makeIngredientProteins());
@@ -135,9 +135,9 @@ import java.util.Set;
         return "Is yummy and makes you fat.";
     }
 
-//    private UnitType makeIngredientType() {
-//        return UnitType.GRAM;
-//    }
+    private UnitType makeIngredientType() {
+        return UnitType.GRAM;
+    }
 
     private double makeIngredientCalories() {
         return 1000;

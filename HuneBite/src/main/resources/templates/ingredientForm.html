@@ -37,7 +37,9 @@
                         <td>
                         <select id="unitTypeDropDown" name="unitType">
                             <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
-                                    th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}"></option>
+                                    th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}">
+
+                            </option>
                         </select>
                     </td>
                     <td>
@@ -72,6 +74,7 @@
     </div>
 
 </div>
-
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
 </body>
 </html>

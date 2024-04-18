@@ -1,9 +1,6 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,10 +14,16 @@ import java.util.Set;
 public class Ingredient {
     @Id @GeneratedValue
     private Long ingredientId;
+
+    @Column(unique=true)
     private String ingredientName;
+
     private String ingredientDescription;
+
+    @Enumerated(EnumType.STRING)
     private UnitType unitType;
     private double unitValue;
+
     @OneToMany(mappedBy = "ingredient")
     private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
