@@ -45,9 +45,9 @@ public class IngredientController {
 // dit is voor je form opslaan
     @PostMapping("/ingredient/new")
    private String AddNewIngredient(@ModelAttribute("ingredient")
-                                       Ingredient ingredient, BindingResult ingredientresult) {
+                                       Ingredient ingredient, BindingResult ingredientResult) {
 
-        if (!ingredientresult.hasErrors()) {
+        if (!ingredientResult.hasErrors()) {
             ingredientRepository.save(ingredient);
         }
 // deze redirect is niet logisch? je wilt eigenlijk naar detail aangemaakte ingredient? nee niet perse.
