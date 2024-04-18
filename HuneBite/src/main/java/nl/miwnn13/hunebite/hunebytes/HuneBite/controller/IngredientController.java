@@ -28,41 +28,59 @@ public class IngredientController {
     }
 
 
-// voor je overzicht
+    // voor je overzicht
     @GetMapping("/ingredient")
     private String ShowAllIngredients(Model model) {
-       model.addAttribute("allIngredients", ingredientRepository.findAll());
+        model.addAttribute("allIngredients", ingredientRepository.findAll());
         model.addAttribute("newIngredient", new Ingredient());
 
-    return "ingredientOverview";
+        return "ingredientOverview";
     }
+
     // dit is voor je form weergeven
     @GetMapping("/ingredient/new")
     private String showIngredientForm(Model model) {
         model.addAttribute("ingredient", new Ingredient());
         return "ingredientForm";
     }
-// dit is voor je form opslaan
-    @PostMapping("/ingredient/new")
-   private String AddNewIngredient(@ModelAttribute("ingredient")
-                                       Ingredient ingredient, BindingResult ingredientresult) {
 
-        if (!ingredientresult.hasErrors()) {
+    // dit is voor je form opslaan
+    @PostMapping("/ingredient/new")
+    private String AddNewIngredient(@ModelAttribute("ingredient")
+                                    Ingredient ingredient, BindingResult ingredientResult) {
+
+        if (ingredient.getIngredientId() == null
+                && ingredientRepository.findByIngredientName(ingredient.getIngredientName()).isPresent()) {
+            return "redirect:/ingredient/new";
+        }
+
+        if (!ingredientResult.hasErrors()) {
             ingredientRepository.save(ingredient);
         }
-// deze redirect is niet logisch? je wilt eigenlijk naar detail aangemaakte ingredient? nee niet perse.
         return "redirect:/ingredient";
     }
-// voor je detail pagina
+
+    // voor je detail pagina
     @GetMapping("/ingredient/detail/{ingredientName}")
     private String showIngredientDetails(@PathVariable("ingredientName") String ingredientName, Model model) {
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
-
         if (ingredient.isEmpty()) {
-        return "redirect:/";
+            return "redirect:/";
         }
 
         model.addAttribute("ingredientToBeShown", ingredient.get());
         return "ingredientDetail";
+    }
+// pas je ingredient aan als deze niet empty is, via ingredient form.
+    @GetMapping("/ingredient/edit/{ingredientName}")
+    private String showIngredientEditForm(@PathVariable("ingredientName") String ingredientName, Model model) {
+        Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
+
+        if (ingredient.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("ingredient", ingredient.get());
+
+        return "ingredientForm";
     }
 }

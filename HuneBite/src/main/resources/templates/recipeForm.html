@@ -69,18 +69,22 @@
             </form>
 
             <script th:inline="javascript">
-                function addStep() {
-                    var stepsTable = document.getElementById('stepsTable');
-                    var newRow = stepsTable.insertRow(-1);
-                    var cell = newRow.insertCell(0);
+                    function addStep() {
+                        var stepsTable = document.getElementById('stepsTable');
+                        var newRow = stepsTable.insertRow(-1);
+                        var cell = newRow.insertCell(0);
 
-                    var newInput = document.createElement('input');
-                    newInput.setAttribute('type', 'text');
-                    newInput.setAttribute('name', 'recipeSteps');
-                    newInput.setAttribute('size', '77')
-                    newInput.setAttribute('placeholder', 'Write a new recipe step here...')
-                    cell.appendChild(newInput);
-                }
+                        var newInput = document.createElement('input');
+                        newInput.setAttribute('type', 'text');
+                        newInput.setAttribute('name', 'recipeSteps');
+                        newInput.setAttribute('size', '77')
+                        newInput.setAttribute('placeholder', 'Write a new recipe step here...')
+                        cell.appendChild(newInput);
+                    }
+
+                    window.onload = function () {
+                        addStep()
+                    };
             </script>
         </div>
     </div>
