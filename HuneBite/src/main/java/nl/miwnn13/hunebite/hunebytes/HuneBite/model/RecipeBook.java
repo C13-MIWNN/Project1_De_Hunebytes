@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Justin Lamberts
  * Purpose for the class
  **/
-@Entity //ivm arraylist kan het geen entity zijn, dus ik denk hier een apparte klasse voor maken?
+@Entity //ivm arraylist kan het geen entity zijn, dus ik denk hier een aparte klasse voor maken?
 public class RecipeBook {
     @Id @GeneratedValue
     private Long recipeBookId;

@@ -19,23 +19,19 @@
     </div>
 
     <div class="containerCenter">
-        <ul>
-            <li th:each="recipe : ${recipeBookToBeShown.recipesSet}">
-                <a th:href="@{/recipe/detail/{recipeTitle}(recipeTitle=${recipe.recipeTitle})}" th:text="${recipe.recipeTitle}"></a>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                th:each="recipe : ${recipeBookToBeShown.recipesSet}">
+                <a th:href="@{/recipe/detail/{recipeTitle}(recipeTitle = ${recipe.recipeTitle})}"
+                   th:text="${recipe.recipeTitle}"></a>
             </li>
         </ul>
 
-        <form action="/recipebook/detail/" method="post">
-            <select id="unitTypeDropDown" name="Recipes">
-                <option th:each="recipe : ${{recipetobeshown.recipeTitle}"
-                        th:value="${recipe}" th:text="${}"></option>
-            </select>
-
-            <button type="submit">Recept toevoegen</button>
-        </form>
+    </div>
     </div>
 
     <div class="container-left">
+        <div class="container-left">
             <h1 th:text="${recipeBookToBeShown.recipeBookName}"></h1>
     </div>
     <div class="container-right">

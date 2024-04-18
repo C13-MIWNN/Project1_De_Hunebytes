@@ -17,7 +17,7 @@ import java.util.Optional;
 
 /**
  * @author Justin Lamberts
- * Purpose for the class
+ * Handles
  **/
 @Controller
 public class RecipeBookController {
@@ -38,11 +38,12 @@ public class RecipeBookController {
     @GetMapping("/recipebook/new")
     private String showIngredientForm(Model model) {
         model.addAttribute("NewRecipeBook", new RecipeBook());
+        model.addAttribute("allRecipes", recipeRepository.findAll());
         return "RecipeBookForm";
     }
 
     @PostMapping("/recipebook/new")
-    private String addRecipeBook(@ModelAttribute("NewRecipeBook") RecipeBook recipeBookToBeSaved, BindingResult result) {
+    private String addRecipeBook(@ModelAttribute("NewRecipeBook") RecipeBook recipeBookToBeSaved, BindingResult result){
         if (recipeBookToBeSaved.getRecipeBookId() == null
                 && recipeBookRepository.findByRecipeBookName(recipeBookToBeSaved.getRecipeBookName()).isPresent()) {
             return "redirect:/recipebook/new";
@@ -60,26 +61,24 @@ public class RecipeBookController {
     @GetMapping("/recipebook/detail/{RecipeBook}")
     private String showRecipeBookDetail(@PathVariable("RecipeBook") String RecipeBook, Model model) {
         Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(RecipeBook);
-
         if (recipeBook.isEmpty()) {
             return "redirect:/";
         }
-
-
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        model.addAttribute("recipeBookToBeShown", recipeBook.get());
 
         return "RecipeBookOverviewPage";
     }
 
     @PostMapping("/recipebook/detail/{RecipeBook}")
-    private String addRecipeBookDetail(@PathVariable("RecipeBook") String RecipeBook, Model model) {
-        Optional<RecipeBook> recipeBook = recipeBookRepository.findByRecipeBookName(RecipeBook);
-        if (recipeBook.isEmpty()) {
-            return "redirect:/";
+    private String addRecipeBookDetail(@ModelAttribute("addRecipeToBook")
+                                           RecipeBook recipeBookToBeSaved, BindingResult bindingResult) {
+        if (!bindingResult.hasErrors()) {
+            recipeBookRepository.save(recipeBookToBeSaved);
         }
 
 
         return "RecipeBookOverviewPage";
     }
-
 }
  
