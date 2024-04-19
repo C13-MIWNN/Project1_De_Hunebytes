@@ -47,11 +47,14 @@ public class IngredientController {
     // dit is voor je form opslaan
     @PostMapping("/ingredient/new")
     private String AddNewIngredient(@ModelAttribute("ingredient")
-                                    Ingredient ingredient, BindingResult ingredientresult) {
-        if (ingredientRepository.findByIngredientName(ingredient.getIngredientName()).isPresent()) {
+                                    Ingredient ingredient, BindingResult ingredientResult) {
+
+        if (ingredient.getIngredientId() == null
+                && ingredientRepository.findByIngredientName(ingredient.getIngredientName()).isPresent()) {
             return "redirect:/ingredient/new";
         }
-        if (!ingredientresult.hasErrors()) {
+
+        if (!ingredientResult.hasErrors()) {
             ingredientRepository.save(ingredient);
         }
         return "redirect:/ingredient";
@@ -68,14 +71,16 @@ public class IngredientController {
         model.addAttribute("ingredientToBeShown", ingredient.get());
         return "ingredientDetail";
     }
-
+// pas je ingredient aan als deze niet empty is, via ingredient form.
     @GetMapping("/ingredient/edit/{ingredientName}")
     private String showIngredientEditForm(@PathVariable("ingredientName") String ingredientName, Model model) {
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
+
         if (ingredient.isEmpty()) {
             return "redirect:/";
         }
-        model.addAttribute("ingredientToBeEdited", ingredient.get());
+        model.addAttribute("ingredient", ingredient.get());
+
         return "ingredientForm";
     }
 }
