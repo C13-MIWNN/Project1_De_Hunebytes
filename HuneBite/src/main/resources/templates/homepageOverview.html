@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="containerHead">
-    <div th:replace="~{fragments/general :: navbar}"></div>
+    <div th:replace="~{fragments/general :: home}"></div>
 </div>
 
 
@@ -19,10 +19,10 @@
 
     <div class="container">
         <div><h1>Search our Page</h1></div>
-        <form class="search" th:action="@{/}" method="post">
+        <div class="search">
             <input type="text" placeholder="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+            <div class="btn btn-outline-success">Search</div>
+        </div>
         <div class="button-container">
             <a href="/recipe/new" class="btn btn-outline-success">Make Recipe</a>
             <a href="/ingredient/new" class="btn btn-outline-success">Make Ingredient</a>
@@ -34,9 +34,8 @@
     <div class="container-left">
         <h1>Menu</h1>
         <ul class="list-group" th:each="RecipeBook : ${allRecipeBooks}">
-            <li class="list-group-item"><a th:href="@{'/recipebook/detail/' + ${RecipeBook.recipeBookName}}"
-                                           th:text="${RecipeBook.recipeBookName}"></a>
-                <span class="badge badge-primary badge-pill" th:text="${numberOfRecipes}"></span>
+            <li class="list-group-item"><a th:href="@{'/recipebook/detail/' + ${RecipeBook.recipeBookName}}" th:text="${RecipeBook.recipeBookName}"></a>
+                <span class="badge badge-primary badge-pill">123</span>
             </li>
         </ul>
         <div class="button-container">
