@@ -3,7 +3,7 @@
 <head th:replace="~{fragments/general :: baseHeader(~{:: title})}">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="/css/library.css" />
-    <title>|Add ingredients to: ${recipeToAddTo.recipeTitle}|</title>
+    <title th:text="|Add ingredients to: ${recipeToAddTo.recipeTitle}|"></title>
 </head>
 
 <body>
@@ -52,41 +52,49 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="ingredientSelectionField" name="ingredient" th:field="*{ingredient}">
+                            <select id="ingredientSelectionField" multiple="multiple" th:field="*{ingredient}"  size="5">
                                 <option th:each="ingredient : ${allIngredients}"
                                         th:value="${ingredient.ingredientId}"
-                                        th:text="'Measurement in: ' + ${ingredient.unitType}
-                                        + ' Ingredient: ' + ${ingredient.ingredientName}">
+                                        th:text="${ingredient.ingredientName}">
                                 </option>
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="ingredientAmountField">Set measurement amount:</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input id="ingredientAmountField" type="number"
-                                   th:field="*{ingredientAmount}">
-                        </td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <label for="ingredientAmountField">Set measurement amount:</label>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <input id="ingredientAmountField" type="text"-->
+<!--                                   th:field="*{ingredientAmount}" size="6">-->
+<!--                        </td>-->
+<!--                    </tr>-->
                 </table>
                 <div id="submitButton">
-                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <button type="submit" class="btn btn-outline-success">Add ingredient</button>
                 </div>
             </form>
         </div>
 
         <div>
-            <ul>
-                <li th:each="recipeIngredient : ${recipeToAddTo.recipeIngredientSet}"
-                    th:text="${recipeIngredient.ingredientAmount} + ' '
-                    + ${recipeIngredient.ingredient.unitType} + ' '
-                    + ${recipeIngredient.ingredient.ingredientName}">
-                </li>
-            </ul>
+        <ul>
+            <li th:each="recipeIngredient : ${recipeToAddTo.recipeIngredientSet}" style="list-style-type: none;">
+                <form th:action="@{'/recipeingredient/delete/{id}'(id=${recipeIngredient.recipeIngredientId})}" th:method="post" style="display: inline;">
+                    <input type="hidden" th:method="DELETE" style="float: left; margin: 5px;"/>
+                    <input type="submit" value="X"/>
+                </form>
+
+                <form th:action="@{'/recipeingredient/setamount/{id}'(id=${recipeIngredient.recipeIngredientId})}" th:object="${recipeIngredient}" th:method="post" style="display: inline;">
+                    <input type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount" th:method="POST" size="6"/>
+                </form>
+
+                <span th:text="${recipeIngredient.ingredientAmount} + ' '
+                    + ${recipeIngredient.ingredient.unitType.getDisplayOfUnit()} + ' '
+                    + ${recipeIngredient.ingredient.ingredientName}" style="display: inline-block;"></span>
+            </li>
+        </ul>
         </div>
 
         <div>

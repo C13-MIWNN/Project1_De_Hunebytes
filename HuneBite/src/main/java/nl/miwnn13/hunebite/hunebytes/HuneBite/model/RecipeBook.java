@@ -20,13 +20,21 @@ public class RecipeBook {
     @ManyToMany
     private Set<Recipe> recipesSet;
 
-    public RecipeBook(Long recipeBookId, String recipeBookName) {
+    public RecipeBook(Long recipeBookId, String recipeBookName, Set<Recipe> recipesSet) {
         this.recipeBookId = recipeBookId;
         this.recipeBookName = recipeBookName;
         this.recipesSet = new HashSet<>();
     }
 
     public RecipeBook() {
+    }
+
+    public long countRecipes() {
+        if (recipesSet != null) {
+            return recipesSet.size();
+        } else {
+            return 0;
+        }
     }
 
     public Long getRecipeBookId() {
@@ -57,4 +65,5 @@ public class RecipeBook {
     public String toString() {
         return recipeBookName;
     }
+
 }
