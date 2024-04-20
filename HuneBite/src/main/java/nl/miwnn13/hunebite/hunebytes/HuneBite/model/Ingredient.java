@@ -22,7 +22,6 @@ public class Ingredient {
 
     @Enumerated(EnumType.STRING)
     private UnitType unitType;
-    private double unitValue;
 
     @OneToMany(mappedBy = "ingredient")
     private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();

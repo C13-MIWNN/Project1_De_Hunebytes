@@ -14,64 +14,64 @@
     </div>
 
     <div class="containerCenter">
+        <div class="ingredientFormDiv">
+            <h1>Add new ingredient</h1>
+             <form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
+                <input type="hidden" th:field="*{ingredientId}">
 
-        <form th:action=" @{/ingredient/new}" method="post" th:object="${ingredient}">
-            <input type="hidden" th:field="*{ingredientId}">
-            <table>
+
+                 <table class="ingredientTable">
                 <tr>
-                    <td><label for="nameField">Name</label></td>
-                    <td><label for="descriptionField">Description</label></td>
-                    </tr>
+                    <td><label class="form-label" for="nameField">Name</label></td>
+                    <td><input type="text" class="form-control" id="nameField" th:field="*{ingredientName}"
+                            size="36" placeholder="Ingredient Name"/> </td>
+                    <td><small th:if="${#fields.hasErrors('ingredientName')}" th:errors="*{ingredientName}">Error!</small></td>
+                </tr>
+                     <tr>
+                        <td><label class="form-label" for="descriptionField">Description</label></td>
+                        <td><textarea class="form-control" id="descriptionField" th:field="*{ingredientDescription}"
+                         rows="2" cols="38" placeholder="Optional ingredient description here"> </textarea>
+                        </td>
+                     </tr>
                 <tr>
+                    <td><label class="form-label" for="unitTypeDropDown">Unit Type</label></td>
                     <td>
-                        <input type="text" id="nameField" th:field="*{ingredientName}" />
-                    </td>
-                    <td>
-                        <input type="text" id="descriptionField" th:field="*{ingredientDescription}" />
-                    </td>
-                    </tr>
-                <tr>
-                    <td><label for="unitTypeDropDown">Unit Type</label></td>
-                    <td><label for="caloriesField">Calories</label></td>
-                 </tr>
-                <tr>
-                        <td>
-                        <select id="unitTypeDropDown" name="unitType">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="unitTypeDropDown" name="unitType">
                             <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
                                     th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}">
-
                             </option>
                         </select>
                     </td>
-                    <td>
-                        <input type="text" id="caloriesField" th:field="*{calories}" />
-                    </td>
+                </tr>
+                <tr>
+                    <td><label class="form-label" for="caloriesField">Calories</label></td>
+                    <td><input type="text" class="form-control" id="caloriesField" th:field="*{calories}"
+                        size="36"/> </td>
+                 </tr>
+                <tr>
+                    <td><label class="form-label" for="proteinsField">Proteins</label></td>
+                    <td><input type="text" class="form-control" id="proteinsField" th:field="*{proteins}"
+                        size="36"/> </td>
                     </tr>
                 <tr>
-                    <td><label for="proteinsField">Proteins</label></td>
-                    <td><label for="fatsField">Fats</label></td>
-                    </tr>
-                <tr>
-                    <td>
-                        <input type="text" id="proteinsField" th:field="*{proteins}" />
-                    </td>
-                    <td>
-                        <input type="text" id="fatsField" th:field="*{fats}" />
-                    </td>
-
+                    <td><label class="form-label" for="fatsField">Fats</label></td>
+                    <td><input type="text" class="form-control" id="fatsField" th:field="*{fats}"
+                        size="36"/> </td>
                     </tr>
             </table>
-            <input type="submit" value="Save your ingredient." />
-        </form>
 
+                 <div id="submitButton">
+                     <button type="submit" class="btn btn-outline-success">Submit</button>
+                 </div>
+             </form>
+        </div>
     </div>
 
     <div class="container-left">
-        <h1>Menu</h1>
 
     </div>
     <div class="container-right">
-        <h1>Possibly interesting content container</h1>
+
     </div>
 
 </div>
