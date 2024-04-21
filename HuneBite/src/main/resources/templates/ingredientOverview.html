@@ -16,18 +16,15 @@
     <div class="containerCenter">
 
         <div>
-        <div class="ingredient-list">
+            <div class="ingredient-list">
             <h2>Ingredient List</h2>
 
 
-            <div th:each="ingredient : ${allIngredients}">
+                <div th:each="ingredient : ${allIngredients}">
                     <a th:href="@{/ingredient/detail/{ingredientName}(ingredientName = ${ingredient.ingredientName})}"
                        th:text="${ingredient.ingredientName}"></a>
+                </div>
             </div>
-        </div>
-        <p>
-            <a th:href="@{/ingredient/new}">Add a new ingredient.</a>
-        </p>
         </div>
     </div>
 
@@ -35,6 +32,9 @@
     </div>
 
     <div class="container-right">
+        <p>
+            <a th:href="@{/ingredient/new}">Add a new ingredient.</a>
+        </p>
     </div>
 
 </div>

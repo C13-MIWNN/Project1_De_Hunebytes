@@ -23,8 +23,9 @@ public class Ingredient {
     @Enumerated(EnumType.STRING)
     private UnitType unitType;
 
-    @OneToMany(mappedBy = "ingredient")
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
     private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
+
 
     private double calories;
     private double proteins;

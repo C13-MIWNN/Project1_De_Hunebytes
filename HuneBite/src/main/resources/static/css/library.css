@@ -129,3 +129,8 @@ body {
     right: 10px;
     transform: translateY(-50%);
 }
+
+ul {
+    list-style-type: none;
+}
+

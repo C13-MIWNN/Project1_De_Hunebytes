@@ -64,9 +64,19 @@ public class IngredientController {
         return "redirect:/ingredient";
     }
 
+    @GetMapping("/ingredient/delete/{ingredientName}")
+private String deleteIngredient(@PathVariable("ingredientName") String ingredientName) {
+        Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
+
+        if (ingredient.isPresent()) {
+            ingredientRepository.delete(ingredient.get());
+        }
+        return "redirect:/";
+    }
     // voor je detail pagina
     @GetMapping("/ingredient/detail/{ingredientName}")
     private String showIngredientDetails(@PathVariable("ingredientName") String ingredientName, Model model) {
+
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
         if (ingredient.isEmpty()) {
             return "redirect:/";
