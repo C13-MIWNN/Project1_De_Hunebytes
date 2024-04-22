@@ -60,11 +60,11 @@ import java.util.*;
         Recipe defaultRecipe4 = makeRecipe("Irish stew");
         Recipe defaultRecipe5 = makeRecipe("Dutch stamppot");
 
-        Ingredient defaultIngredient = makeIngredient("Egg");
-        Ingredient defaultIngredient1 = makeIngredient("Cheese");
-        Ingredient defaultIngredient2 = makeIngredient("Garlic");
-        Ingredient defaultIngredient3 = makeIngredient("Thyme");
-        Ingredient defaultIngredient4 = makeIngredient("Rice");
+        Ingredient defaultIngredient = makeIngredient("Egg", UnitType.PIECE, 9, 15,5);
+        Ingredient defaultIngredient1 = makeIngredient("Cheese", UnitType.GRAM, 7, 0,1);
+        Ingredient defaultIngredient2 = makeIngredient("Milk", UnitType.MILLILITER, 9, 1,1);
+        Ingredient defaultIngredient3 = makeIngredient("Thyme", UnitType.TEASPOON, 1, 0,0);
+        Ingredient defaultIngredient4 = makeIngredient("Rice", UnitType.GRAM, 9, 2,1);
 
         RecipeBook favorites = makeRecipeBook("Favorites", defaultRecipe1);
 
@@ -130,34 +130,20 @@ import java.util.*;
         return recipeIngredient;
     }
 
-    private Ingredient makeIngredient(String ingredient) {
-        Ingredient defaultingredient = new Ingredient();
-        defaultingredient.setIngredientName(ingredient);
-        defaultingredient.setIngredientDescription(makeIngredientDescription());
-        defaultingredient.setUnitType(makeIngredientType());
-        defaultingredient.setCalories(makeIngredientCalories());
-        defaultingredient.setFats(makeIngredientFats());
-        defaultingredient.setProteins(makeIngredientProteins());
+    private Ingredient makeIngredient(String ingredientName, UnitType unitType,
+                                      double carbohydrates, double proteins, double fats
+                                      ) {
+        Ingredient ingredient = new Ingredient();
 
-        ingredientRepository.save(defaultingredient);
-        return defaultingredient;
-    }
-    private String makeIngredientDescription() {
-        return "Is yummy and makes you fat.";
-    }
+        ingredient.setIngredientName(ingredientName);
+        ingredient.setUnitType(unitType);
+        ingredient.setCarbohydrates(carbohydrates);
+        ingredient.setProteins(proteins);
+        ingredient.setFats(fats);
 
-    private UnitType makeIngredientType() {
-        return UnitType.GRAM;
+        ingredientRepository.save(ingredient);
+        return ingredient;
     }
 
-    private double makeIngredientCalories() {
-        return 1000;
-    }
-    private double makeIngredientFats() {
-        return 1500;
-    }
-    private double makeIngredientProteins() {
-        return 900.1;
-    }
 }
 

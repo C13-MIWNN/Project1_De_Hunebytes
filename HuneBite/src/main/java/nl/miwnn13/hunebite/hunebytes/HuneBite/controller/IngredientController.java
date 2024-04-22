@@ -44,14 +44,18 @@ public class IngredientController {
         return "ingredientForm";
     }
 
-    // dit is voor je form opslaan
+
     @PostMapping("/ingredient/new")
     private String AddNewIngredient(@ModelAttribute("ingredient")
-                                    Ingredient ingredient, BindingResult ingredientResult) {
+                                    Ingredient ingredient, BindingResult ingredientResult, Model model) {
 
         if (ingredient.getIngredientId() == null
                 && ingredientRepository.findByIngredientName(ingredient.getIngredientName()).isPresent()) {
-            return "redirect:/ingredient/new";
+            ingredientResult.rejectValue("ingredientName", "ingredient.exists",
+                    "Ingredient already exists");
+            model.addAttribute("ingredient", ingredient);
+
+            return "ingredientForm";
         }
 
         if (!ingredientResult.hasErrors()) {
@@ -60,9 +64,19 @@ public class IngredientController {
         return "redirect:/ingredient";
     }
 
+    @GetMapping("/ingredient/delete/{ingredientName}")
+private String deleteIngredient(@PathVariable("ingredientName") String ingredientName) {
+        Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
+
+        if (ingredient.isPresent()) {
+            ingredientRepository.delete(ingredient.get());
+        }
+        return "redirect:/";
+    }
     // voor je detail pagina
     @GetMapping("/ingredient/detail/{ingredientName}")
     private String showIngredientDetails(@PathVariable("ingredientName") String ingredientName, Model model) {
+
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
         if (ingredient.isEmpty()) {
             return "redirect:/";
