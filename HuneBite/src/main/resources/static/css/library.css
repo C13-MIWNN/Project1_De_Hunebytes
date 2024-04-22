@@ -152,3 +152,8 @@ body {
     width: 2em;
     height: 2em;
 }
+
+ul {
+    list-style-type: none;
+}
+
