@@ -53,14 +53,20 @@
                         <td><label class="formLabel" for="recipeStepInput">Recipe steps:</label></td>
                     </tr>
                     <tr th:each="step, index : *{recipeSteps}">
-                        <td><input type="text" id="recipeStepInput"
-                                   th:field="*{recipeSteps[__${index.index}__]}" size="77" />
+                        <td>
+                            <input type="text" id="recipeStepInput"
+                                   th:field="*{recipeSteps[__${index.index}__]}" size="77">
+                            <button class="removeButton btn btn-outline-danger"
+                                    type="button" onclick="removeStep(this)">
+                            </button>
                         </td>
                     </tr>
                 </table>
 
                 <div id="recipeStepButtonDiv">
-                    <button type="button" onclick="addStep()" class="btn btn-outline-success">Add step</button>
+                    <button type="button" onclick="addStep()"
+                            class="btn btn-outline-success">Add step
+                    </button>
                 </div>
 
                 <div id="submitButton">
@@ -80,11 +86,23 @@
                         newInput.setAttribute('size', '77')
                         newInput.setAttribute('placeholder', 'Write a new recipe step here...')
                         cell.appendChild(newInput);
+
+                        var removeButton = document.createElement('button');
+                        removeButton.setAttribute('type', 'button');
+                        removeButton.setAttribute('onclick', 'removeStep(this)');
+                        removeButton.setAttribute('class', 'removeButton btn btn-outline-danger');
+                        cell.appendChild(removeButton);
                     }
 
                     window.onload = function () {
                         addStep()
                     };
+
+                    function removeStep(button) {
+                        var row = button.closest('tr');
+
+                        row.remove();
+                    }
             </script>
         </div>
     </div>

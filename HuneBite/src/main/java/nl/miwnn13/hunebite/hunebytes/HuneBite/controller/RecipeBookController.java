@@ -32,19 +32,15 @@ public class RecipeBookController {
     @GetMapping({"/"})
     public String showOverviewPage(Model model, RecipeBook recipeBook) {
         model.addAttribute("allRecipeBooks", recipeBookRepository.findAll());
-        model.addAttribute("recipeBook", recipeBook);
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        long numberOfRecipes = recipeBook.countRecipes();
-        model.addAttribute("numberOfRecipes", numberOfRecipes);
+
         return "homepageOverview";
     }
 
     @PostMapping("/")
     public String searchByTitle(@ModelAttribute("searchQuery") String searchQuery, Model model) {
-//        model.addAttribute("searchQuery", searchQuery(searchQuery));
-
         if (recipeRepository.findByRecipeTitle(searchQuery).isPresent()) {
-            return "redirect:/recipe/new/"; //+ searchQuery;
+            return "redirect:/recipe/detail/" + searchQuery;
         }
         return "redirect:/";
     }

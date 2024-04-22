@@ -75,4 +75,18 @@ public class RecipeController {
 
         return urlString.toString();
     }
+
+    @GetMapping("/recipe/edit/{recipeTitle}")
+    private String showRecipeEditForm(@PathVariable("recipeTitle") String recipeTitle, Model model) {
+        Optional<Recipe> recipe = recipeRepository.findByRecipeTitle(recipeTitle);
+
+        if (recipe.isEmpty()) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("recipe", recipe.get());
+
+        return "recipeForm";
+        }
+
 }
