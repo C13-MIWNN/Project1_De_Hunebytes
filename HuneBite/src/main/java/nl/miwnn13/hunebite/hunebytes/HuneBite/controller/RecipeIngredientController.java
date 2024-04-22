@@ -45,7 +45,6 @@ public class RecipeIngredientController {
         model.addAttribute("recipeToAddTo", recipe.get());
         model.addAttribute("recipeIngredient", new RecipeIngredient());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
-
         return "recipeIngredientForm";
     }
 
@@ -117,8 +116,7 @@ public class RecipeIngredientController {
             String returnUrl = "redirect:/recipe/" + recipeTitle + "/add/ingredients";
             return returnUrl;
         } else {
-            // Handle if recipe ingredient is not found
-            return "redirect:/error";
+            return "redirect:/";
 
         }
     }

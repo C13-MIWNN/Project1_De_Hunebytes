@@ -17,7 +17,6 @@
     </div>
 
     <div class="containerCenter">
-        <!--        Main container of the page-->
         <div>
             <h1 class="header123">Add ingredients to:
                 <span th:text="${recipeToAddTo.recipeTitle}"></span>
@@ -44,59 +43,45 @@
                 <input type="hidden" th:field="*{recipeIngredientId}">
                 <input type="hidden" th:field="*{recipe}" th:value="${recipeToAddTo.getRecipeId()}">
 
-                <table>
-                    <tr>
-                        <td>
-                            <label for="ingredientSelectionField">Choose an ingredient:</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="ingredientSelectionField" multiple="multiple" th:field="*{ingredient}"  size="5">
-                                <option th:each="ingredient : ${allIngredients}"
-                                        th:value="${ingredient.ingredientId}"
-                                        th:text="${ingredient.ingredientName}">
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <label for="ingredientAmountField">Set measurement amount:</label>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <input id="ingredientAmountField" type="text"-->
-<!--                                   th:field="*{ingredientAmount}" size="6">-->
-<!--                        </td>-->
-<!--                    </tr>-->
-                </table>
-                <div id="submitButton">
-                    <button type="submit" class="btn btn-outline-success">Add ingredient</button>
+                <div>
+                    <label for="ingredientSelectionField">Choose an ingredient:</label>
+                </div>
+                <div class="select-div">
+                    <select name="ingredient-select" id="ingredientSelectionField" multiple="multiple" th:field="*{ingredient}" >
+                        <option th:each="ingredient : ${allIngredients}"
+                            th:value="${ingredient.ingredientId}"
+                            th:text="${ingredient.ingredientName}">
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-success">Add ingredient(s)</button>
                 </div>
             </form>
         </div>
+        <br>
 
         <div>
-        <ul>
-            <li th:each="recipeIngredient : ${recipeToAddTo.recipeIngredientSet}" style="list-style-type: none;">
-                <form th:action="@{'/recipeingredient/delete/{id}'(id=${recipeIngredient.recipeIngredientId})}" th:method="post" style="display: inline;">
-                    <input type="hidden" th:method="DELETE" style="float: left; margin: 5px;"/>
-                    <input type="submit" value="X"/>
-                </form>
+            <div th:each="recipeIngredient : ${recipeToAddTo.recipeIngredientSet}" style="list-style-type: none;">
+                <div>
+                    <form th:action="@{'/recipeingredient/delete/{id}'(id=${recipeIngredient.recipeIngredientId})}"
+                          th:method="post" style="display: inline;">
+                        <input type="hidden" th:method="DELETE" style="float: left; margin: 5px;"/>
+                        <input type="submit" value="" class="removeButton btn btn-outline-danger"/>
+                    </form>
 
-                <form th:action="@{'/recipeingredient/setamount/{id}'(id=${recipeIngredient.recipeIngredientId})}" th:object="${recipeIngredient}" th:method="post" style="display: inline;">
-                    <input type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount" th:method="POST" size="6"/>
-                </form>
-
-                <span th:text="${recipeIngredient.ingredientAmount} + ' '
-                    + ${recipeIngredient.ingredient.unitType.getDisplayOfUnit()} + ' '
-                    + ${recipeIngredient.ingredient.ingredientName}" style="display: inline-block;"></span>
-            </li>
-        </ul>
+                    <form th:action="@{'/recipeingredient/setamount/{id}'(id=${recipeIngredient.recipeIngredientId})}"
+                          th:object="${recipeIngredient}" th:method="post" style="display: inline;">
+                        <input type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount"
+                               th:method="POST" size="4"/>
+                        <input type="submit" value="" class="addButton1 btn btn-outline-success"/>
+                        <span th:text="${recipeIngredient.ingredient.unitType.getDisplayOfUnit()} + ' '
+                        + ${recipeIngredient.ingredient.ingredientName}" style="display: inline-block;"></span>
+                    </form>
+                </div>
+            </div>
         </div>
-
+        <br>
         <div>
             <form th:action="@{'/recipe/detail/' + ${recipeToAddTo.recipeTitle}}">
                 <button type="submit" class="btn btn-outline-success">Go to detail page</button>
