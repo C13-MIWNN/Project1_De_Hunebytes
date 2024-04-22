@@ -6,8 +6,8 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
  */
 public enum UnitType {
     PIECE ("per Piece"),
-    MILLILITER("Milliliters"),
-    GRAM("Grams"),
+    MILLILITER("per Milliliter"),
+    GRAM("per Gram"),
     TEASPOON("per Teaspoon");
 
     private final String displayOfUnit;

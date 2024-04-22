@@ -23,13 +23,33 @@ public class Ingredient {
     @Enumerated(EnumType.STRING)
     private UnitType unitType;
 
-    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.REMOVE)
     private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
 
-    private double calories;
+    private double carbohydrates;
     private double proteins;
     private double fats;
+
+    public Ingredient(Long ingredientId, String ingredientName, UnitType unitType,
+                      double carbohydrates, double proteins, double fats,
+                      Set<RecipeIngredient> recipeIngredientSet, String ingredientDescription) {
+        this.ingredientId = ingredientId;
+        this.ingredientName = ingredientName;
+        this.unitType = unitType;
+        this.carbohydrates = carbohydrates;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.recipeIngredientSet = recipeIngredientSet;
+        this.ingredientDescription = ingredientDescription;
+    }
+
+    public Ingredient() {
+    }
+
+    public double getKcalPerUnit(double carbohydrates, double proteins, double fats) {
+       return 4 * carbohydrates + 4 * proteins + 9 * fats;
+    }
 
     public String getIngredientName() {
         return ingredientName;
@@ -56,12 +76,12 @@ public class Ingredient {
         this.unitType = unitType;
     }
 
-    public double getCalories() {
-        return calories;
+    public double getCarbohydrates() {
+        return carbohydrates;
     }
 
-    public void setCalories(double calories) {
-        this.calories = calories;
+    public void setCarbohydrates(double calories) {
+        this.carbohydrates = calories;
     }
 
     public double getProteins() {
