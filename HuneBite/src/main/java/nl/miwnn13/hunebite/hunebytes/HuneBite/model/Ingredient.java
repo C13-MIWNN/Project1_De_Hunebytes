@@ -47,7 +47,7 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public double getKcalPerUnit(double carbohydrates, double proteins, double fats) {
+    public double getKcalPerUnit() {
        return 4 * carbohydrates + 4 * proteins + 9 * fats;
     }
 

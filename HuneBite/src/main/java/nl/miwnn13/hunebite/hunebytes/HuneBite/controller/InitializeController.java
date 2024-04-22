@@ -61,7 +61,7 @@ import java.util.*;
         Recipe defaultRecipe5 = makeRecipe("Dutch stamppot");
 
         Ingredient defaultIngredient = makeIngredient("Egg", UnitType.PIECE, 9, 15,5);
-        Ingredient defaultIngredient1 = makeIngredient("Cheese", UnitType.GRAM, 7, 0,1);
+        Ingredient defaultIngredient1 = makeIngredient("Cheese", UnitType.GRAM, 0, 0.227,0.299);
         Ingredient defaultIngredient2 = makeIngredient("Milk", UnitType.MILLILITER, 9, 1,1);
         Ingredient defaultIngredient3 = makeIngredient("Thyme", UnitType.TEASPOON, 1, 0,0);
         Ingredient defaultIngredient4 = makeIngredient("Rice", UnitType.GRAM, 9, 2,1);
