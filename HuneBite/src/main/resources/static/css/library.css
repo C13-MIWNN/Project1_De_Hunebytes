@@ -21,6 +21,10 @@ body {
 .button-container {
     margin-top: 10px;
 }
+.initialize-button {
+    position: absolute;
+    bottom: 200px;
+}
 .containerCenter {
     display: flex;
     position: fixed;

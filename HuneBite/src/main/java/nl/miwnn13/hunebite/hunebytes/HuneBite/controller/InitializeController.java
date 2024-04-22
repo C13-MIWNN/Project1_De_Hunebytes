@@ -1,22 +1,18 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.model.*;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeIngredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.*;
+import nl.miwnn13.hunebite.hunebytes.HuneBite.services.HunebyteUserService;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Justin Lamberts
@@ -31,24 +27,31 @@ import java.util.Set;
         private final RecipeRepository recipeRepository;
         private final TagRepository tagRepository;
         private final RecipeIngredientRepository recipeIngredientRepository;
+        private final HunebyteUserService hunebyteUserService;
 
     public InitializeController(RecipeBookRepository recipeBookRepository,
                                 IngredientRepository ingredientRepository,
                                 RecipeRepository recipeRepository,
                                 TagRepository tagRepository,
-                                RecipeIngredientRepository recipeIngredientRepository) {
+                                RecipeIngredientRepository recipeIngredientRepository, HunebyteUserService hunebyteUserService) {
         this.recipeBookRepository = recipeBookRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
         this.tagRepository = tagRepository;
         this.recipeIngredientRepository = recipeIngredientRepository;
+        this.hunebyteUserService = hunebyteUserService;
     }
 
+    @EventListener
+    private void seed(ContextRefreshedEvent event){
+        if (hunebyteUserService.isNotInitialised()) {
+            initializeDB();
+        }
+    }
 
     @GetMapping("/initialize")
     private String initializeDB() {
-
-
+        makeUser("Admin", "Admin");
 
 
         Recipe defaultRecipe1 = makeRecipe("Boiled Egg");
@@ -68,6 +71,14 @@ import java.util.Set;
         RecipeIngredient recipeIngredient1 = makeRecipeIngredient(defaultRecipe1, defaultIngredient, 2);
 
         return "redirect:/";
+    }
+
+    private HunebyteUser makeUser(String username, String password) {
+        HunebyteUser user = new HunebyteUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        hunebyteUserService.saveUser(user);
+        return user;
     }
 
     private RecipeBook makeRecipeBook(String Name, Recipe recipe) {
