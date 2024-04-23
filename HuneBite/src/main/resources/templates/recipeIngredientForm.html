@@ -47,7 +47,8 @@
                     <label for="ingredientSelectionField">Choose an ingredient:</label>
                 </div>
                 <div class="select-div">
-                    <select name="ingredient-select" id="ingredientSelectionField" multiple="multiple" th:field="*{ingredient}" >
+                    <select name="ingredient-select" id="ingredientSelectionField"
+                            multiple="multiple" th:field="*{ingredient}">
                         <option th:each="ingredient : ${allIngredients}"
                             th:value="${ingredient.ingredientId}"
                             th:text="${ingredient.ingredientName}">
@@ -75,7 +76,7 @@
                         <input type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount"
                                th:method="POST" size="4"/>
                         <input type="submit" value="" class="addButton1 btn btn-outline-success"/>
-                        <span th:text="${recipeIngredient.ingredient.unitType.getDisplayOfUnit()} + ' '
+                        <span th:text="${recipeIngredient.ingredient.unitType.getDisplayTotal()} + ' '
                         + ${recipeIngredient.ingredient.ingredientName}" style="display: inline-block;"></span>
                     </form>
                 </div>

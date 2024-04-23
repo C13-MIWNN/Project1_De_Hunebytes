@@ -45,6 +45,7 @@ public class RecipeIngredientController {
         model.addAttribute("recipeToAddTo", recipe.get());
         model.addAttribute("recipeIngredient", new RecipeIngredient());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
+
         return "recipeIngredientForm";
     }
 
@@ -67,7 +68,8 @@ public class RecipeIngredientController {
 
             if (ingredient.isPresent()) {
                 recipeIngredientToBeSaved.setIngredient(ingredient.get());
-                if (recipeIngredientRepository.findByRecipeAndIngredient(recipeIngredientToBeSaved.getRecipe(), recipeIngredientToBeSaved.getIngredient()).isPresent()) {
+                if (recipeIngredientRepository.findByRecipeAndIngredient(recipeIngredientToBeSaved.getRecipe(),
+                        recipeIngredientToBeSaved.getIngredient()).isPresent()) {
                     recipeIngredientToBeSaved.setIngredient(null);
                 } else if (!result.hasErrors()) {
                     recipeIngredientRepository.save(recipeIngredientToBeSaved);
@@ -117,7 +119,6 @@ public class RecipeIngredientController {
             return returnUrl;
         } else {
             return "redirect:/";
-
         }
     }
 }
