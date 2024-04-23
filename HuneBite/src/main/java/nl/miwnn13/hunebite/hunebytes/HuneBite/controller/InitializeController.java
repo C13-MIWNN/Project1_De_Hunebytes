@@ -60,11 +60,11 @@ import java.util.*;
         Recipe defaultRecipe4 = makeRecipe("Irish stew");
         Recipe defaultRecipe5 = makeRecipe("Dutch stamppot");
 
-        Ingredient defaultIngredient = makeIngredient("Egg", UnitType.PIECE, 9, 15,5);
-        Ingredient defaultIngredient1 = makeIngredient("Cheese", UnitType.GRAM, 7, 0,1);
-        Ingredient defaultIngredient2 = makeIngredient("Milk", UnitType.MILLILITER, 9, 1,1);
-        Ingredient defaultIngredient3 = makeIngredient("Thyme", UnitType.TEASPOON, 1, 0,0);
-        Ingredient defaultIngredient4 = makeIngredient("Rice", UnitType.GRAM, 9, 2,1);
+        Ingredient defaultIngredient = makeIngredient("Egg", UnitType.PIECE, 0, 6.2,4.4);
+        Ingredient defaultIngredient1 = makeIngredient("Cheese", UnitType.GRAM, 0, 0.3,0.2);
+        Ingredient defaultIngredient2 = makeIngredient("Melk", UnitType.MILLILITER, 0.044, 0.034,0.044);
+        Ingredient defaultIngredient3 = makeIngredient("Thyme", UnitType.TEASPOON, 0, 0,0);
+        Ingredient defaultIngredient4 = makeIngredient("Rice", UnitType.GRAM, 0.3, 0.1,0.1);
 
         RecipeBook favorites = makeRecipeBook("Favorites", defaultRecipe1);
 

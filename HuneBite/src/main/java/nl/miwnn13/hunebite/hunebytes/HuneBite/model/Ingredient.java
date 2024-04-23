@@ -8,10 +8,15 @@ import java.util.Set;
 /**
  * @author Mareth Westhoff
  * Represents an ingredient which can be addded to a recipe
+ * Constants for factors kcal per gram are assumed from the values, 'Voedingscentrum' in the Netherlands, uses.
  **/
 
 @Entity
 public class Ingredient {
+
+    public static final int CARB_TO_KCAL_FACTOR_PER_GRAM = 4;
+    public static final int PROTEIN_TO_KCAL_FACTOR_PER_GRAM = 4;
+    public static final int FAT_TO_KCAL_FACTOR_PER_GRAM = 9;
     @Id @GeneratedValue
     private Long ingredientId;
 
@@ -47,8 +52,10 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public double getKcalPerUnit(double carbohydrates, double proteins, double fats) {
-       return 4 * carbohydrates + 4 * proteins + 9 * fats;
+    public double getKcalPerUnit(){
+       return CARB_TO_KCAL_FACTOR_PER_GRAM * carbohydrates +
+               PROTEIN_TO_KCAL_FACTOR_PER_GRAM * proteins +
+               FAT_TO_KCAL_FACTOR_PER_GRAM * fats;
     }
 
     public String getIngredientName() {

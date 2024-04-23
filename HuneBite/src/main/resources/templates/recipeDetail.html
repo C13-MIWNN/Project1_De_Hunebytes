@@ -38,10 +38,11 @@
         <ul>
             <li th:each="ingredient : *{recipeToBeShown.recipeIngredientSet}"
                 th:text="${ingredient.ingredientAmount} + ' '
-                + ${ingredient.ingredient.unitType.getDisplayOfUnit()} + ' '
+                + ${ingredient.ingredient.unitType.getDisplayTotal()} + ' '
                 + ${ingredient.ingredient.ingredientName}">
             </li>
         </ul>
+        <p th:text="'This recipe has ' + ${recipeToBeShown.getTotalKcalOfRecipe()} + ' kilocalories.'"></p>
     </div>
 </div>
 </body>
