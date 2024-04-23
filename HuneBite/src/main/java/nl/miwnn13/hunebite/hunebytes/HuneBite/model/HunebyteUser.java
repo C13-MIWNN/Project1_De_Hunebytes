@@ -73,4 +73,9 @@ public class HunebyteUser implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s", this.username);
+    }
 }

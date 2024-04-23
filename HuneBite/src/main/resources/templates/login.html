@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/css/library.css" />
+    <title>Please Log In</title>
+</head>
+<body>
+<div class="containerHead">
+    <div th:replace="~{fragments/general :: home}"></div>
+    <div th:replace="~{fragments/general :: navbar}"></div>
+</div>
+
+<div class="parent">
+    <div class="containerCenter">
+        <div class="card">
+            <h1>Inloggen bij hune bite</h1>
+            <div th:if="${param.error}">Invalid username and password.</div>
+            <div th:if="${param.logout}">You have been logged out.</div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Gebruikersnaam</label>
+                    <input id="username" class="form-control" type="text" name="username" placeholder="Username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Wachtwoord</label>
+                    <input id="password" class="form-control" type="password" name="password" placeholder="Password"/>
+                </div>
+                <input class="btn btn-outline-success" type="submit" value="Inloggen" />
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

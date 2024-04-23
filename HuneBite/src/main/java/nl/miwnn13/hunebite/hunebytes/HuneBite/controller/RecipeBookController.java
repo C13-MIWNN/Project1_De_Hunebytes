@@ -37,15 +37,6 @@ public class RecipeBookController {
         return "homepageOverview";
     }
 
-    @PostMapping("/")
-    public String searchByTitle(@ModelAttribute("searchQuery") String searchQuery, Model model) {
-        if (recipeRepository.findByRecipeTitle(searchQuery).isPresent()) {
-            return "redirect:/recipe/detail/" + searchQuery;
-        }
-        return "redirect:/";
-    }
-
-
     @GetMapping("/recipebook/new")
     private String showIngredientForm(Model model) {
         model.addAttribute("NewRecipeBook", new RecipeBook());
@@ -91,5 +82,7 @@ public class RecipeBookController {
 
         return "RecipeBookOverviewPage";
     }
+
+
 }
  
