@@ -36,7 +36,7 @@ public class Recipe {
             return String.format("%.2f", totalKcal);
         }
 
-        return "0.0";
+        return "0,0";
     }
     public Long getRecipeId() {
         return recipeId;
