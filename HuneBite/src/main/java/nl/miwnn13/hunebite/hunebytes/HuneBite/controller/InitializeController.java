@@ -68,7 +68,7 @@ import java.util.*;
 
         RecipeBook favorites = makeRecipeBook("Favorites", defaultRecipe1);
 
-        RecipeIngredient recipeIngredient1 = makeRecipeIngredient(defaultRecipe1, defaultIngredient, 2);
+        RecipeIngredient recipeIngredient1 = makeRecipeIngredient(defaultRecipe1, defaultIngredient, 1);
 
         return "redirect:/";
     }

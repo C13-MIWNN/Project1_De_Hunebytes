@@ -1,7 +1,5 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
@@ -41,7 +39,7 @@ public class RecipeBookController {
     private String showIngredientForm(Model model) {
         model.addAttribute("NewRecipeBook", new RecipeBook());
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "RecipeBookForm";
+        return "recipeBookForm";
     }
 
     @PostMapping("/recipebook/new")
@@ -69,7 +67,7 @@ public class RecipeBookController {
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("recipeBookToBeShown", recipeBook.get());
 
-        return "RecipeBookOverviewPage";
+        return "recipeBookOverviewPage";
     }
 
     @PostMapping("/recipebook/detail/{RecipeBook}")
@@ -80,7 +78,7 @@ public class RecipeBookController {
         }
 
 
-        return "RecipeBookOverviewPage";
+        return "recipeBookOverviewPage";
     }
 
 

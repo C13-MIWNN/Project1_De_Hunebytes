@@ -1,6 +1,7 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
 
+import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Ingredient;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.Recipe;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeIngredientRepository;
@@ -87,6 +88,12 @@ public class RecipeController {
         model.addAttribute("recipe", recipe.get());
 
         return "recipeForm";
-        }
+    }
+
+    @GetMapping("/recipe")
+    private String ShowAllRecipes(Model model) {
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        return "recipeOverview";
+    }
 
 }
