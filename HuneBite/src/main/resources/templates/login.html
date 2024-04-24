@@ -15,16 +15,16 @@
 <div class="parent">
     <div class="containerCenter">
         <div class="card">
-            <h1>Inloggen bij hune bite</h1>
+            <h1>Log in at Hunebyte</h1>
             <div th:if="${param.error}">Invalid username and password.</div>
             <div th:if="${param.logout}">You have been logged out.</div>
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
-                    <label for="username">Gebruikersnaam</label>
+                    <label for="username">Username</label>
                     <input id="username" class="form-control" type="text" name="username" placeholder="Username"/>
                 </div>
                 <div class="form-group">
-                    <label for="password">Wachtwoord</label>
+                    <label for="password">Password</label>
                     <input id="password" class="form-control" type="password" name="password" placeholder="Password"/>
                 </div>
                 <input class="btn btn-outline-success" type="submit" value="Inloggen" />
