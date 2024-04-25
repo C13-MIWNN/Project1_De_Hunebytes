@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IngredientTest {
 
     @Test
-    @DisplayName("Should calculate kCal for Ingredient")
+    @DisplayName("Should calculate kCal for Ingredient without carbohydrates")
     void unitValuesShouldCalculateCalories1() {
         //Arrange
         Ingredient ingredient = new Ingredient();
@@ -27,7 +27,7 @@ class IngredientTest {
 
     }
     @Test
-    @DisplayName("Should calculate kCal for Ingredient")
+    @DisplayName("Should calculate kCal for Ingredient without protein")
     void unitValuesShouldCalculateCalories2() {
         //Arrange
         Ingredient ingredient = new Ingredient();
@@ -46,7 +46,7 @@ class IngredientTest {
 
     }
     @Test
-    @DisplayName("Should calculate kCal for Ingredient")
+    @DisplayName("Should calculate kCal for Ingredient without fat")
     void unitValuesShouldCalculateCalories3() {
         //Arrange
         Ingredient ingredient = new Ingredient();

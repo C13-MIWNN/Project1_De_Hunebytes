@@ -4,36 +4,31 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="/css/library.css" />
-    <title>Home</title>
+    <title>Choose titel</title>
 
 </head>
 <body>
 
 <div class="parent">
 
+
     <div class="containerHead">
         <div th:replace="~{fragments/general :: navbar}"></div>
     </div>
 
     <div class="containerCenter">
-        <h1>Search Results</h1>
-        <ul>
-            <li th:each="recipe : ${searchResults}">
-                <a th:href="@{/recipe/detail/{recipe}(recipe=${recipe.recipeTitle})}" th:text="${recipe.recipeTitle}"></a>
-            </li>
-        </ul>
-
-    </div>
+<!--        Main container of the page-->
     </div>
 
     <div class="container-left">
-
     </div>
     <div class="container-right">
-        <h1></h1>
     </div>
 
 </div>
+
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
 
 </body>
 </html>

@@ -5,10 +5,10 @@ package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
  * Contains the predefined measument types for our ingredient units.
  */
 public enum UnitType {
-    PIECE ("per Piece", ""),
-    MILLILITER("per Milliliter", "Milliliters"),
-    GRAM("per Gram", "Grams"),
-    TEASPOON("per Teaspoon", "Teaspoons"),;
+    PIECE ("per Piece", "  "),
+    MILLILITER("per Milliliter", "ml"),
+    GRAM("per Gram", "gr"),
+    TEASPOON("per Teaspoon", "tbs"),;
 
     private final String displayOfUnit;
     private final String displayTotal;
