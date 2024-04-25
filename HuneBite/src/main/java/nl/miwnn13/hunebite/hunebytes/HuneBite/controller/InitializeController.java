@@ -4,7 +4,6 @@ import nl.miwnn13.hunebite.hunebytes.HuneBite.model.*;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeBookRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.IngredientRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.RecipeRepository;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.TagRepository;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.*;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.services.HunebyteUserService;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -25,19 +24,16 @@ import java.util.*;
         private final RecipeBookRepository recipeBookRepository;
         private final IngredientRepository ingredientRepository;
         private final RecipeRepository recipeRepository;
-        private final TagRepository tagRepository;
         private final RecipeIngredientRepository recipeIngredientRepository;
         private final HunebyteUserService hunebyteUserService;
 
     public InitializeController(RecipeBookRepository recipeBookRepository,
                                 IngredientRepository ingredientRepository,
                                 RecipeRepository recipeRepository,
-                                TagRepository tagRepository,
                                 RecipeIngredientRepository recipeIngredientRepository, HunebyteUserService hunebyteUserService) {
         this.recipeBookRepository = recipeBookRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
-        this.tagRepository = tagRepository;
         this.recipeIngredientRepository = recipeIngredientRepository;
         this.hunebyteUserService = hunebyteUserService;
     }
