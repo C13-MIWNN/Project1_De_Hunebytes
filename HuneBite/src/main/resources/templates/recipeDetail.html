@@ -44,5 +44,9 @@
         <p th:text="'This recipe has ' + ${recipeToBeShown.getTotalKcalOfRecipe()} + ' kilocalories.'"></p>
     </div>
 </div>
+
+<div th:replace="~{fragments/general :: footer}"></div>
+<div th:replace="~{fragments/general :: bottomScripts}"></div>
+
 </body>
 </html>
