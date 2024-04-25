@@ -4,12 +4,11 @@
     <title th:text="|Details for recipe: ${recipeToBeShown.recipeTitle}|"></title>
 </head>
 <body>
-<div th:replace="~{fragments/general :: navbar}"></div>
 
 <div class="parent">
 
     <div class="containerHead">
-        <div th:replace="~{fragments/general :: home}"></div>
+        <div th:replace="~{fragments/general :: navbar}"></div>
     </div>
 
     <div class="containerCenter">

@@ -1,7 +1,6 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.controller;
 
 import nl.miwnn13.hunebite.hunebytes.HuneBite.model.HunebyteUser;
-import nl.miwnn13.hunebite.hunebytes.HuneBite.model.RecipeBook;
 import nl.miwnn13.hunebite.hunebytes.HuneBite.repositories.HunebyteUserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +29,6 @@ public class ProfileController {
         }
         model.addAttribute("User", byUsername);
 
-        return "ProfilePage";
+        return "profilePage";
     }
 }
