@@ -81,7 +81,7 @@ import java.util.*;
         return user;
     }
 
-    private RecipeBook makeRecipeBook(String Name, Recipe recipe) {
+    protected RecipeBook makeRecipeBook(String Name, Recipe recipe) {
         RecipeBook recipeBook = new RecipeBook();
         recipeBook.setRecipeBookName(Name);
 
