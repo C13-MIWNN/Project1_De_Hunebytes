@@ -24,8 +24,7 @@ public class Recipe {
     private Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
 
-    public String getTotalKcalOfRecipe() {
-        if (recipeIngredientSet != null) {
+    public double getTotalKcalOfRecipe() {
             double totalKcal = 0.0;
 
             for (RecipeIngredient recipeIngredient : recipeIngredientSet) {
@@ -33,10 +32,7 @@ public class Recipe {
                         * recipeIngredient.getIngredientAmount();
             }
 
-            return String.format("%.2f", totalKcal);
-        }
-
-        return "0,0";
+            return totalKcal;
     }
     public Long getRecipeId() {
         return recipeId;

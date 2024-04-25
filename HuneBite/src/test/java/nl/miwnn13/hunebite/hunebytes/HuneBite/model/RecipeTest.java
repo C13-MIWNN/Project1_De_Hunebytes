@@ -18,36 +18,150 @@ class RecipeTest {
     @Test
     @DisplayName("Should show correct total of kcal's for a recipe with 10 of each 4 ingredients," +
             " that have their macro values set to 10")
-    void shouldShowCorrectTotalKcalsOfRecipeTestOne() {
+    void shouldShowCorrectTotalKcalSOfRecipeTestOne() {
         var testRecipe = makeRecipe("testRecipe");
         testRecipe.setRecipeIngredientSet(setupRecipeIngredientForTest(
                 testRecipe, 4,10.0, 10));
 
-        assertEquals("6800,00", testRecipe.getTotalKcalOfRecipe());
+        assertEquals(6800.00, testRecipe.getTotalKcalOfRecipe(), 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should show correct total of kcal's for a recipe with 5 of each 3 ingredients, " +
+            "that have carbs, proteins and fats set to 2.21, 1.62 and 0.63 respectively")
+    void shouldShowCorrectTotalOfKcalSForARecipeWithFiveOfEachThreeIngredientsWithDifferentMacroValues() {
+        var testRecipe = makeRecipe("testRecipe");
+        testRecipe.setRecipeIngredientSet(setupRecipeIngredientForTestWithDifferentMacroValues(
+            testRecipe,
+            3,
+            2.21,
+            1.62,
+            0.63,
+            5));
+
+        assertEquals(314.85, testRecipe.getTotalKcalOfRecipe(), 0.0001);
+
+    }
+
+    @Test
+    @DisplayName("Should show correct total of kcal's for a recipe, " +
+            "that has 6 of 1 ingredient with carbs, proteins and fat set to 2.21, 1.62 and null respectively")
+    void shouldShowCorrectTotalOfKcalSForARecipeThatHasSixOfOneIngredientWithOneMacroValueSetToNull() {
+        var testRecipe = makeRecipe("testRecipe");
+
+        var testIngredient = new Ingredient();
+        testIngredient.setCarbohydrates(2.21);
+        testIngredient.setProteins(1.62);
+
+        var recipeIngredient = new RecipeIngredient();
+        recipeIngredient.setIngredientAmount(6);
+        recipeIngredient.setRecipe(testRecipe);
+        recipeIngredient.setIngredient(testIngredient);
+
+        testRecipe.getRecipeIngredientSet().add(recipeIngredient);
+
+        assertEquals(91.92, testRecipe.getTotalKcalOfRecipe(), 0.0001);
+    }
+
+    @Test
+    @DisplayName("Should show correct total kcal's for a recipe with 10 of each 4 ingredients, " +
+            "that have no macro values set")
+    void shouldShowCorrectTotalKcalSForARecipeWithTenOfEachFourIngredientsThatHaveNoMacroValuesSet() {
+        var testRecipe = makeRecipe("testRecipe");
+        testRecipe.setRecipeIngredientSet(setupRecipeIngredientForTest(
+                testRecipe, 4,0.0, 10));
+
+        assertEquals(0.00, testRecipe.getTotalKcalOfRecipe());
     }
 
     @Test
     @DisplayName("Should show correct total of kcal's for a recipe with 0 ingredients")
-    void shouldShowCorrectTotalOfKcalsForARecipeWithNoIngredients() {
+    void shouldShowCorrectTotalOfKcalSForARecipeWithNoIngredients() {
         var testRecipe = makeRecipe("testRecipe");
         Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
         testRecipe.setRecipeIngredientSet(recipeIngredientSet);
 
-        assertEquals("0,00", testRecipe.getTotalKcalOfRecipe());
+        assertEquals(0.00, testRecipe.getTotalKcalOfRecipe());
     }
 
-    @Test
-    @DisplayName("Should show correct total of kcal's for a new recipe")
-    void shouldShowCorrectTotalOfKcalsForANewRecipe() {
-        var testRecipe = makeRecipe("testRecipe");
+    private Recipe makeRecipe(String recipeTitle) {
+        var recipe = new Recipe();
+        recipe.setRecipeTitle(recipeTitle);
 
-        assertEquals("0,0", testRecipe.getTotalKcalOfRecipe());
+        return recipe;
     }
 
+    private Ingredient makeIngredient(String ingredientName, double carbs, double proteins, double fats) {
+        var ingredient = new Ingredient();
+        ingredient.setIngredientName(ingredientName);
+        ingredient.setCarbohydrates(carbs);
+        ingredient.setProteins(proteins);
+        ingredient.setFats(fats);
 
-    private Set<RecipeIngredient> setupRecipeIngredientForTest(Recipe recipe, int amountOfIngredients,
-                                                          Double ingredientMacroValues, int ingredientAmount) {
-        Set<Ingredient> testIngredients = IngredientsWithTheseMacroValues(amountOfIngredients, ingredientMacroValues);
+        return ingredient;
+    }
+
+    private RecipeIngredient makeRecipeIngredient(
+        Recipe recipe,
+        Ingredient ingredient,
+        int ingredientAmount) {
+
+        var recipeIngredient = new RecipeIngredient();
+        recipeIngredient.setRecipe(recipe);
+        recipeIngredient.setIngredient(ingredient);
+        recipeIngredient.setIngredientAmount(ingredientAmount);
+
+        return recipeIngredient;
+    }
+
+    private Set<Ingredient> makeIngredientSetWithTheseMacroValues(
+        int amountOfIngredients,
+        double ingredientMacroValue) {
+
+        Set<Ingredient> ingredientSet = new HashSet<>();
+
+        for (int i = 0; i < amountOfIngredients; i++) {
+            Ingredient testIngredient = makeIngredient(
+                "testIngredient",
+                ingredientMacroValue,
+                ingredientMacroValue,
+                ingredientMacroValue);
+
+            ingredientSet.add(testIngredient);
+        }
+
+        return ingredientSet;
+    }
+
+    private Set<Ingredient> makeIngredientSetWithDifferentMacroValues(
+        int amountOfIngredients,
+        double ingredientCarbValue,
+        double ingredientProteinValue,
+        double ingredientFatValue) {
+
+        Set<Ingredient> ingredientSet = new HashSet<>();
+
+        for (int i = 0; i < amountOfIngredients; i++) {
+            Ingredient testIngredient = makeIngredient(
+                "testIngredient",
+                ingredientCarbValue,
+                ingredientProteinValue,
+                ingredientFatValue);
+
+            ingredientSet.add(testIngredient);
+        }
+
+        return ingredientSet;
+    }
+
+    private Set<RecipeIngredient> setupRecipeIngredientForTest(
+            Recipe recipe,
+            int amountOfIngredients,
+            double ingredientMacroValues,
+            int ingredientAmount) {
+
+        Set<Ingredient> testIngredients = makeIngredientSetWithTheseMacroValues(
+                amountOfIngredients, ingredientMacroValues);
         Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
         for (Ingredient ingredient : testIngredients) {
@@ -59,46 +173,28 @@ class RecipeTest {
         return recipeIngredientSet;
     }
 
-    private Recipe makeRecipe(String recipeTitle) {
-        var recipe = new Recipe();
-        recipe.setRecipeTitle(recipeTitle);
+    private Set<RecipeIngredient> setupRecipeIngredientForTestWithDifferentMacroValues(
+        Recipe recipe,
+        int amountOfIngredients,
+        double ingredientCarbValue,
+        double ingredientProteinValue,
+        double ingredientFatValue ,
+        int ingredientAmount) {
 
-        return recipe;
-    }
+        Set<Ingredient> testIngredients = makeIngredientSetWithDifferentMacroValues(
+                amountOfIngredients,
+                ingredientCarbValue,
+                ingredientProteinValue,
+                ingredientFatValue);
 
-    private Ingredient makeIngredient(String ingredientName, Double carbs, Double proteins, Double fats) {
-        var ingredient = new Ingredient();
-        ingredient.setIngredientName(ingredientName);
-        ingredient.setCarbohydrates(carbs);
-        ingredient.setProteins(proteins);
-        ingredient.setFats(fats);
+        Set<RecipeIngredient> recipeIngredientSet = new HashSet<>();
 
-        return ingredient;
-    }
+        for (Ingredient ingredient : testIngredients) {
+            RecipeIngredient recipeIngredient = makeRecipeIngredient(recipe, ingredient, ingredientAmount);
 
-    private RecipeIngredient makeRecipeIngredient(Recipe recipe,
-                                              Ingredient ingredient,
-                                              int ingredientAmount) {
-        var recipeIngredient = new RecipeIngredient();
-        recipeIngredient.setRecipe(recipe);
-        recipeIngredient.setIngredient(ingredient);
-        recipeIngredient.setIngredientAmount(ingredientAmount);
-
-        return recipeIngredient;
-    }
-
-    private Set<Ingredient> IngredientsWithTheseMacroValues(int amountOfIngredients, Double ingredientAmount) {
-        Set<Ingredient> fourIngredients = new HashSet<>();
-
-        for (int i = 0; i < amountOfIngredients; i++) {
-            Ingredient testIngredient = makeIngredient("testIngredient",
-                    ingredientAmount,
-                    ingredientAmount,
-                    ingredientAmount);
-
-            fourIngredients.add(testIngredient);
+            recipeIngredientSet.add(recipeIngredient);
         }
 
-        return fourIngredients;
+        return recipeIngredientSet;
     }
 }
