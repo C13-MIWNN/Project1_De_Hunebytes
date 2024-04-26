@@ -15,7 +15,7 @@ h2 {
 }
 
 .homeImageContainer {
-    background-image: url(images/FirstDolmen.png);
+    background-image: url(static/images/FirstDolmen.png);
     background-repeat: no-repeat;
     float: left;
     width: 100px;
@@ -25,10 +25,12 @@ h2 {
 
 .nav-link {
     color: olivedrab;
+    font-size: large;
 }
 
 .nav-link:hover {
     color: darkgreen;
+
 }
 
 .parent {
