@@ -22,7 +22,9 @@ public class HunebyteSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/webjars/**", "/css/**", "/images/**","/fragments/**", "/recipebook/detail/**" )
+                        .requestMatchers("/webjars/**", "/css/**", "/images/**","/fragments/**",
+                                "/recipe/detail/**", "/recipe", "/ingredient", "/recipebook/detail/**",
+                                "/ingredient/detail/**" )
                             .permitAll()
                         .anyRequest().authenticated()
                 )

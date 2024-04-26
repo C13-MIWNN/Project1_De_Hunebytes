@@ -156,6 +156,11 @@ a {
     width: 250px;
 }
 
+#recipeToBeSaved {
+    width: 250px;
+    height: 250px;
+}
+
 .header123 {
     text-align: center;
 }
