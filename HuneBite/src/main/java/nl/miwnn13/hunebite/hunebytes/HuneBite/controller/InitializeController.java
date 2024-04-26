@@ -30,7 +30,8 @@ import java.util.*;
     public InitializeController(RecipeBookRepository recipeBookRepository,
                                 IngredientRepository ingredientRepository,
                                 RecipeRepository recipeRepository,
-                                RecipeIngredientRepository recipeIngredientRepository, HunebyteUserService hunebyteUserService) {
+                                RecipeIngredientRepository recipeIngredientRepository,
+                                HunebyteUserService hunebyteUserService) {
         this.recipeBookRepository = recipeBookRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeRepository = recipeRepository;
