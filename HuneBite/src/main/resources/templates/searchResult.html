@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" type="text/css" href="/css/library.css" />
+    <link rel="stylesheet" type="text/css" href="/css/library.css"/>
     <title>Home</title>
 
 </head>
@@ -16,23 +16,25 @@
     </div>
 
     <div class="containerCenter">
+        <div class="group-item">
+            <ul>
+                <li th:each="recipe : ${searchResults}">
+                    <a class="nav-link" th:href="@{/recipe/detail/{recipe}(recipe=${recipe.recipeTitle})}"
+                       th:text="${recipe.recipeTitle}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-left">
+    <div class="group-item-">
         <h1>Search Results</h1>
-        <ul>
-            <li th:each="recipe : ${searchResults}">
-                <a class="nav-link" th:href="@{/recipe/detail/{recipe}(recipe=${recipe.recipeTitle})}"
-                   th:text="${recipe.recipeTitle}"></a>
-            </li>
-        </ul>
-
     </div>
-    </div>
-
-    <div class="container-left">
-
-    </div>
-    <div class="container-right">
-        <h1></h1>
-    </div>
+</div>
+<div class="container-right">
+    <h1></h1>
+</div>
 
 <div th:replace="~{fragments/general :: footer}"></div>
 <div th:replace="~{fragments/general :: bottomScripts}"></div>

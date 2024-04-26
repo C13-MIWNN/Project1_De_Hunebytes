@@ -30,7 +30,6 @@ h2 {
 
 .nav-link:hover {
     color: darkgreen;
-
 }
 
 .parent {
@@ -41,13 +40,16 @@ h2 {
     top: 0;
     background-color: dimgray;
 }
+
 .button-container {
     margin-top: 10px;
 }
+
 .initialize-button {
     position: absolute;
     bottom: 200px;
 }
+
 .containerCenter {
     display: flex;
     position: fixed;
@@ -62,8 +64,8 @@ h2 {
     text-align: center;
     overflow: auto;
     background-color: whitesmoke;
-
 }
+
 .containerHome {
     position: fixed;
     left: 0;
@@ -94,12 +96,15 @@ h2 {
     background-color: whitesmoke; /* Optional background color */
     padding: 20px; /* Optional padding */
 }
+
 .container-left{
     left: 0;
 }
+
 .container-right {
     right: 0;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -132,9 +137,7 @@ p {
 }
 
 .search {
-    margin-top: 10px;
     margin-bottom: 10px;
-
 }
 
 #submitButton {
@@ -176,6 +179,10 @@ p {
     width: 250px;
 }
 
+#recipeToBeSaved {
+    width: 250px;
+    height: 250px;
+}
 
 .header123 {
     text-align: center;
@@ -214,5 +221,6 @@ ul {
 .fixed-bottom {
     text-align: right;
 }
+
 
 
