@@ -4,6 +4,7 @@ function addStep() {
     var cell = newRow.insertCell(0);
 
     var newInput = document.createElement('input');
+    newInput.setAttribute('class', 'input-text')
     newInput.setAttribute('type', 'text');
     newInput.setAttribute('name', 'recipeSteps');
     newInput.setAttribute('size', '77')

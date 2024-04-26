@@ -42,7 +42,7 @@
                 <input type="hidden" th:field="*{recipe}" th:value="${recipeToAddTo.getRecipeId()}">
 
                 <div>
-                    <label for="ingredientSelectionField">Choose an ingredient:</label>
+                    <label class="formLabel" for="ingredientSelectionField">Choose an ingredient:</label>
                 </div>
                 <div class="select-div">
                     <select name="ingredient-select" id="ingredientSelectionField"
@@ -71,10 +71,10 @@
 
                     <form th:action="@{'/recipeingredient/setamount/{id}'(id=${recipeIngredient.recipeIngredientId})}"
                           th:object="${recipeIngredient}" th:method="post" style="display: inline;">
-                        <input type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount"
+                        <input class="input-text" type="text" th:value="*{ingredientAmount}" th:name="ingredientAmount"
                                th:method="POST" size="4"/>
                         <input type="submit" value="" class="addButton1 btn btn-outline-success"/>
-                        <span th:text="${recipeIngredient.ingredient.unitType.getDisplayTotal()} + ' '
+                        <span class="span-text" th:text="${recipeIngredient.ingredient.unitType.getDisplayTotal()} + ' '
                         + ${recipeIngredient.ingredient.ingredientName}" style="display: inline-block;"></span>
                     </form>
                 </div>

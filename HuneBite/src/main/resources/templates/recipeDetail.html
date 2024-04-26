@@ -35,7 +35,7 @@
     <div class="container-right">
         <h2>Ingredients:</h2>
         <ul>
-            <li th:each="ingredient : *{recipeToBeShown.recipeIngredientSet}"
+            <li class="li-text" th:each="ingredient : *{recipeToBeShown.recipeIngredientSet}"
                 th:text="${ingredient.ingredientAmount} + ' '
                 + ${ingredient.ingredient.unitType.getDisplayTotal()} + ' '
                 + ${ingredient.ingredient.ingredientName}">

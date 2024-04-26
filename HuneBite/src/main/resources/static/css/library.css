@@ -105,11 +105,30 @@ h2 {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 20px;
+}
 
+.formLabel {
+    color: olivedrab;
+}
+
+.span-text {
+    color: olivedrab;
+}
+
+.input-text {
+    color: olivedrab;
+}
+
+.li-text {
+    color: olivedrab;
 }
 
 a {
     text-decoration: none;
+}
+
+p {
+    color: olivedrab;
 }
 
 .search {
@@ -143,14 +162,17 @@ a {
 }
 
 #recipeStepList {
+    color: olivedrab;
     text-align: left;
 }
 
 #recipeDescText {
+    color: olivedrab;
     text-align: left;
 }
 
 #ingredientSelectionField {
+    color: olivedrab;
     width: 250px;
 }
 
