@@ -66,22 +66,15 @@ public class RecipeIngredientController {
             recipeIngredientToBeSaved = new RecipeIngredient();
             recipeIngredientToBeSaved.setRecipe(recipe.get());
 
-            if (ingredient.isPresent()) {
-                recipeIngredientToBeSaved.setIngredient(ingredient.get());
-                if (recipeIngredientRepository.findByRecipeAndIngredient(recipeIngredientToBeSaved.getRecipe(),
-                        recipeIngredientToBeSaved.getIngredient()).isPresent()) {
-                    recipeIngredientToBeSaved.setIngredient(null);
-                } else if (!result.hasErrors()) {
-                    recipeIngredientRepository.save(recipeIngredientToBeSaved);
-                } else {
-                    return "redirect:/";
-                }
+            if (CheckRecipeIngredient(recipeIngredientToBeSaved, result, ingredient)) {
+                recipeIngredientRepository.save(recipeIngredientToBeSaved);
             }
         }
 
         String returnUrl = "redirect:/recipe/" + recipeTitle + "/add/ingredients";
         return returnUrl;
     }
+
 
     @RequestMapping(value = "/recipeingredient/setamount/{id}", method = RequestMethod.POST)
     public String setRecipeIngredientAmount(@ModelAttribute("recipeIngredient")
@@ -120,5 +113,23 @@ public class RecipeIngredientController {
         } else {
             return "redirect:/";
         }
+    }
+
+    private boolean CheckRecipeIngredient(RecipeIngredient recipeIngredientToBeSaved,
+                                          BindingResult result,
+                                          Optional<Ingredient> ingredient) {
+        boolean isRecipeIngredientValid = true;
+
+        if (ingredient.isPresent()) {
+            recipeIngredientToBeSaved.setIngredient(ingredient.get());
+            if (recipeIngredientRepository.findByRecipeAndIngredient(recipeIngredientToBeSaved.getRecipe(),
+                    recipeIngredientToBeSaved.getIngredient()).isPresent()) {
+                isRecipeIngredientValid = false;
+            } else if (result.hasErrors()) {
+                isRecipeIngredientValid = false;
+            }
+        }
+
+        return isRecipeIngredientValid;
     }
 }

@@ -1,6 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+<<<<<<< HEAD
     <option name="scopesOrder">
       <list>
         <option value="All Changed Files" />
@@ -151,6 +152,20 @@
     <inspection_tool class="GroovyWaitCallNotInLoop" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="GroovyWaitWhileNotSynchronized" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="GroovyWhileLoopSpinsOnField" enabled="false" level="ERROR" enabled_by_default="false" />
+=======
+    <inspection_tool class="CyclomaticComplexity" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_limit" value="4" />
+    </inspection_tool>
+    <inspection_tool class="GroovyMethodParameterCount" enabled="false" level="WARNING" enabled_by_default="false" editorAttributes="WARNING_ATTRIBUTES">
+      <option name="m_limit" value="4" />
+    </inspection_tool>
+    <inspection_tool class="GroovyOverlyComplexMethod" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="m_limit" value="4" />
+    </inspection_tool>
+    <inspection_tool class="GroovyOverlyLongMethod" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="m_limit" value="15" />
+    </inspection_tool>
+>>>>>>> ca571d16f927ea7ede4facf02f9035429c23b54a
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
@@ -163,6 +178,7 @@
     </inspection_tool>
     <inspection_tool class="JavaStylePropertiesInvocation" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="LongLine" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="TEXT_STYLE_SUGGESTION" />
+<<<<<<< HEAD
     <inspection_tool class="NewGroovyClassNamingConvention" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="NewInstanceOfSingleton" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="NonCommentSourceStatements" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="TEXT_STYLE_SUGGESTION">
@@ -170,6 +186,13 @@
     </inspection_tool>
     <inspection_tool class="ParametersPerMethod" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="m_limit" value="3" />
+=======
+    <inspection_tool class="NonCommentSourceStatements" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_limit" value="15" />
+    </inspection_tool>
+    <inspection_tool class="ParametersPerMethod" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_limit" value="4" />
+>>>>>>> ca571d16f927ea7ede4facf02f9035429c23b54a
     </inspection_tool>
     <inspection_tool class="ProblematicWhitespace" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SecondUnsafeCall" enabled="true" level="ERROR" enabled_by_default="true" />
