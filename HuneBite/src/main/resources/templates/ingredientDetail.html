@@ -34,9 +34,11 @@
     <div class="container-right">
         <div>
             <ul>
-                <li><a th:href="@{/ingredient/edit/{ingredientName}(ingredientName = ${ingredientToBeShown.ingredientName})}">Edit Ingredient</a></li>
-                <li><a th:href="@{/ingredient/delete/{ingredientName}(ingredientName = ${ingredientToBeShown.ingredientName})}">Delete Ingredient</a></li>
-                <li><a th:href="@{/ingredient}">Ingredient Overview</a></li>
+                <li><a class="nav-link" th:href="@{/ingredient/edit/{ingredientName}(ingredientName
+                    = ${ingredientToBeShown.ingredientName})}">Edit Ingredient</a></li>
+                <li><a class="nav-link" th:href="@{/ingredient/delete/{ingredientName}(ingredientName
+                    = ${ingredientToBeShown.ingredientName})}">Delete Ingredient</a></li>
+                <li><a class="nav-link" th:href="@{/ingredient}">Ingredient Overview</a></li>
 
             </ul>
         </div>

@@ -38,10 +38,6 @@ public class RecipeBook {
         return recipeBookId;
     }
 
-    public void setRecipeBookId(Long recipeBookId) {
-        this.recipeBookId = recipeBookId;
-    }
-
     public String getRecipeBookName() {
         return recipeBookName;
     }

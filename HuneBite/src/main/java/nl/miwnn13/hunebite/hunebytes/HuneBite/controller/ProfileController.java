@@ -11,7 +11,7 @@ import java.util.Optional;
 
 /**
  * @author Justin Lamberts
- * Purpose for the class
+ * Handles everything related to the user page.
  **/
 @Controller
 public class ProfileController {

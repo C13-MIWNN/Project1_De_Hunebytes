@@ -15,7 +15,7 @@ import java.util.List;
  **/
 @Controller
 public class SearchController {
-    private RecipeRepository recipeRepository;
+    private final RecipeRepository recipeRepository;
 
     public SearchController(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
