@@ -28,7 +28,7 @@ public class IngredientController {
     }
 
 
-    // voor je overzicht
+
     @GetMapping("/ingredient")
     private String ShowAllIngredients(Model model) {
         model.addAttribute("allIngredients", ingredientRepository.findAll());
@@ -37,7 +37,7 @@ public class IngredientController {
         return "ingredientOverview";
     }
 
-    // dit is voor je form weergeven
+
     @GetMapping("/ingredient/new")
     private String showIngredientForm(Model model) {
         model.addAttribute("ingredient", new Ingredient());
@@ -65,7 +65,7 @@ public class IngredientController {
     }
 
     @GetMapping("/ingredient/delete/{ingredientName}")
-private String deleteIngredient(@PathVariable("ingredientName") String ingredientName) {
+    private String deleteIngredient(@PathVariable("ingredientName") String ingredientName) {
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);
 
         if (ingredient.isPresent()) {
@@ -73,7 +73,7 @@ private String deleteIngredient(@PathVariable("ingredientName") String ingredien
         }
         return "redirect:/";
     }
-    // voor je detail pagina
+
     @GetMapping("/ingredient/detail/{ingredientName}")
     private String showIngredientDetails(@PathVariable("ingredientName") String ingredientName, Model model) {
 
@@ -85,7 +85,7 @@ private String deleteIngredient(@PathVariable("ingredientName") String ingredien
         model.addAttribute("ingredientToBeShown", ingredient.get());
         return "ingredientDetail";
     }
-// pas je ingredient aan als deze niet empty is, via ingredient form.
+
     @GetMapping("/ingredient/edit/{ingredientName}")
     private String showIngredientEditForm(@PathVariable("ingredientName") String ingredientName, Model model) {
         Optional<Ingredient> ingredient = ingredientRepository.findByIngredientName(ingredientName);

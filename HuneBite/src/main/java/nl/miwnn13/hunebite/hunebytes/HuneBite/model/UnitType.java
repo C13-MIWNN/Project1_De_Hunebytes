@@ -1,8 +1,9 @@
 package nl.miwnn13.hunebite.hunebytes.HuneBite.model;
 
+
 /**
  * @author Mareth Westhoff.
- * Contains the predefined measument types for our ingredient units.
+ * Contains the predefined measurement types for our ingredient units.
  */
 public enum UnitType {
     PIECE ("per Piece", "  "),
@@ -18,13 +19,13 @@ public enum UnitType {
         this.displayTotal = displayTotal;
     }
 
-public String getDisplayOfUnit() {
+    public String getDisplayOfUnit() {
         return displayOfUnit;
-}
+    }
 
-public String getDisplayTotal() {
+    public String getDisplayTotal() {
         return displayTotal;
-}
+    }
 
 
 }
