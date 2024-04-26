@@ -3,7 +3,7 @@ body {
 }
 
 .homeImageContainer {
-    background-image: url(images/HuneByte.jpg);
+    background-image: url(../images/HuneByte.jpg);
     background-repeat: no-repeat;
     float: left;
     width: 100px;

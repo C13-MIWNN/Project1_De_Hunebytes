@@ -33,7 +33,7 @@
     </div>
 
     <div class="container-right">
-        <h3>Ingredients:</h3>
+        <h2>Ingredients:</h2>
         <ul>
             <li th:each="ingredient : *{recipeToBeShown.recipeIngredientSet}"
                 th:text="${ingredient.ingredientAmount} + ' '
