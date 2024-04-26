@@ -15,9 +15,10 @@
         <div th:fragment="home">
             <a th:href="@{/}"><div class="homeImageContainer"></div></a>
         </div>
-        <div>
-        <ul class="nav justify-content-center">
-            <li><a class="nav-link"  th:href="@{/recipe}">Recipes</a>
+
+        <div class="nav justify-content-center">
+            <ul class="nav justify-content-center">
+            <li><a class="nav-link" th:href="@{/recipe}">Recipes</a>
             </li>
             <li><a class="nav-link" th:href="@{/ingredient}">Ingredients</a>
             </li>
@@ -33,7 +34,7 @@
                 <a class="nav-link" th:href="@{/profile/{username}(username = ${#authentication.getName()})}">
                     <span sec:authentication="name"></span></a>
             </li>
-        </ul>
+            </ul>
         </div>
     </div>
 </div>
