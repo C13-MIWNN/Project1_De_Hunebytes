@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractAu
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * @author Justin Lamberts
@@ -28,7 +29,7 @@ public class HunebyteSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll())
-                .logout((logout) -> logout
+                .logout((logout) -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .permitAll());
 

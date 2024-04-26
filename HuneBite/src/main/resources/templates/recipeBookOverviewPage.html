@@ -15,15 +15,15 @@
         <div th:replace="~{fragments/general :: navbar}"></div>
     </div>
 
-    <div class="containerCenter">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+    <div class="containerCenter" size="176">
+        <ul class="list-group list-group-flush">
+            <li class="nav-link list-group-item list-group-item-action d-flex justify-content-between
+                    align-items-center"
                 th:each="recipe : ${recipeBookToBeShown.recipesSet}">
                 <a th:href="@{/recipe/detail/{recipeTitle}(recipeTitle = ${recipe.recipeTitle})}"
                    th:text="${recipe.recipeTitle}"></a>
             </li>
         </ul>
-
     </div>
     </div>
 
