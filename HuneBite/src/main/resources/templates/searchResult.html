@@ -19,7 +19,8 @@
         <h1>Search Results</h1>
         <ul>
             <li th:each="recipe : ${searchResults}">
-                <a th:href="@{/recipe/detail/{recipe}(recipe=${recipe.recipeTitle})}" th:text="${recipe.recipeTitle}"></a>
+                <a class="nav-link" th:href="@{/recipe/detail/{recipe}(recipe=${recipe.recipeTitle})}"
+                   th:text="${recipe.recipeTitle}"></a>
             </li>
         </ul>
 

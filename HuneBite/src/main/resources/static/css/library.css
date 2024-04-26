@@ -23,6 +23,14 @@ h2 {
     /*object-fit: scale-down;*/
 }
 
+.nav-link {
+    color: olivedrab;
+}
+
+.nav-link:hover {
+    color: darkgreen;
+}
+
 .parent {
     height: 100vh;
     position: fixed;
@@ -96,6 +104,10 @@ h2 {
     justify-content: center;
     margin-bottom: 20px;
 
+}
+
+a {
+    text-decoration: none;
 }
 
 .search {

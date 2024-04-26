@@ -15,7 +15,7 @@ import java.util.Optional;
 
 /**
  * @author Justin Lamberts
- * Handles
+ * Handles all actions related to the RecipeBook
  **/
 @Controller
 public class RecipeBookController {

@@ -12,11 +12,12 @@
 
 <div th:fragment="navbar">
     <div>
-        <div th:fragment="home">
-            <a th:href="@{/}"><div class="homeImageContainer"></div></a>
-        </div>
+<!--        <div th:fragment="home">-->
+<!--            <a th:href="@{/}"><div class="homeImageContainer"></div></a>-->
+<!--        </div>-->
+        <div>
         <ul class="nav justify-content-center">
-            <li><a class="nav-link" th:href="@{/recipe}">Recipes</a>
+            <li><a class="nav-link"  th:href="@{/recipe}">Recipes</a>
             </li>
             <li><a class="nav-link" th:href="@{/ingredient}">Ingredients</a>
             </li>
@@ -33,6 +34,7 @@
                     <span sec:authentication="name"></span></a>
             </li>
         </ul>
+        </div>
     </div>
 </div>
 

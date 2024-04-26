@@ -22,7 +22,7 @@
             <div class="ingredient-list">
                 <h2>Recipe List</h2>
                 <div th:each="recipe : ${allRecipes}">
-                    <a th:href="@{/recipe/detail/{recipeTitle}(recipeTitle = ${recipe.recipeTitle})}"
+                    <a class="nav-link" th:href="@{/recipe/detail/{recipeTitle}(recipeTitle = ${recipe.recipeTitle})}"
                      th:text="${recipe.getRecipeTitle()}"></a>
                 </div>
             </div>
