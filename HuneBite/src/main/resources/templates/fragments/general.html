@@ -12,9 +12,9 @@
 
 <div th:fragment="navbar">
     <div>
-<!--        <div th:fragment="home">-->
-<!--            <a th:href="@{/}"><div class="homeImageContainer"></div></a>-->
-<!--        </div>-->
+        <div th:fragment="home">
+            <a th:href="@{/}"><div class="homeImageContainer"></div></a>
+        </div>
         <div>
         <ul class="nav justify-content-center">
             <li><a class="nav-link"  th:href="@{/recipe}">Recipes</a>
@@ -38,9 +38,9 @@
     </div>
 </div>
 
-<div th:fragment="home">
-    <a th:href="@{/}"><div class="homeImageContainer"></div></a>
-</div>
+<!--<div th:fragment="home">-->
+<!--    <a th:href="@{/}"><div class="homeImageContainer"></div></a>-->
+<!--</div>-->
 
 <div th:fragment="footer">
     <footer><p class="fixed-bottom">Copyright TJM Boulder &copy;2024</p></footer>
@@ -50,7 +50,6 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/recipeStepScript.js}"></script>
 </div>
 
 </body>
