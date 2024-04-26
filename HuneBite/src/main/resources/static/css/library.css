@@ -112,7 +112,15 @@ h2 {
     margin-bottom: 20px;
 }
 
+.option-text {
+    color: olivedrab;
+}
+
 .formLabel {
+    color: olivedrab;
+}
+
+.form-label {
     color: olivedrab;
 }
 
@@ -138,6 +146,14 @@ p {
 
 .search {
     margin-bottom: 10px;
+}
+
+#unitTypeDropDown {
+    color: olivedrab;
+}
+
+#descriptionField {
+    color: olivedrab;
 }
 
 #submitButton {

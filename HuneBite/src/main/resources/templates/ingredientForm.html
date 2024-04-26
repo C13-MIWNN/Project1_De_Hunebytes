@@ -23,7 +23,7 @@
                  <table class="ingredientTable">
                 <tr>
                     <td><label class="form-label" for="nameField">Name</label></td>
-                    <td><input type="text" class="form-control" id="nameField" th:field="*{ingredientName}"
+                    <td><input type="text" class="form-control input-text" id="nameField" th:field="*{ingredientName}"
                             size="36" placeholder="Ingredient Name"/> </td>
                     <td><small th:if="${#fields.hasErrors('ingredientName')}" th:errors="*{ingredientName}">Error!</small></td>
                 </tr>
@@ -37,7 +37,7 @@
                     <td><label class="form-label" for="unitTypeDropDown">Unit Type</label></td>
                     <td>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="unitTypeDropDown" name="unitType">
-                            <option th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
+                            <option class="option-text" th:each="unitTypeOpt : ${T(nl.miwnn13.hunebite.hunebytes.HuneBite.model.UnitType).values()}"
                                     th:value="${unitTypeOpt}" th:text="${unitTypeOpt.displayOfUnit}">
                             </option>
                         </select>
@@ -45,17 +45,17 @@
                 </tr>
                 <tr>
                     <td><label class="form-label" for="carbohydratesField">Carbohydrates</label></td>
-                    <td><input type="text" class="form-control" id="carbohydratesField" th:field="*{carbohydrates}"
+                    <td><input type="text" class="form-control input-text" id="carbohydratesField" th:field="*{carbohydrates}"
                                size="36"/> </td>
                  </tr>
                 <tr>
                     <td><label class="form-label" for="proteinsField">Proteins</label></td>
-                    <td><input type="text" class="form-control" id="proteinsField" th:field="*{proteins}"
+                    <td><input type="text" class="form-control input-text" id="proteinsField" th:field="*{proteins}"
                         size="36"/> </td>
                     </tr>
                 <tr>
                     <td><label class="form-label" for="fatsField">Fats</label></td>
-                    <td><input type="text" class="form-control" id="fatsField" th:field="*{fats}"
+                    <td><input type="text" class="form-control input-text" id="fatsField" th:field="*{fats}"
                         size="36"/> </td>
                     </tr>
             </table>
