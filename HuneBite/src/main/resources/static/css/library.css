@@ -15,13 +15,12 @@ h2 {
 }
 
 .homeImageContainer {
-    background-image: url(images/FirstDolmen.png);
-    background-repeat: no-repeat;
+    background-image: url('../images/FirstDolmen.png');
+    /*background-repeat: no-repeat;*/
     float: left;
     width: 100px;
     height: 100px;
     position: absolute;
-    object-fit: scale-down;
 }
 
 .nav-link {
