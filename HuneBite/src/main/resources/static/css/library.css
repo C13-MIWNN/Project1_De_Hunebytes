@@ -179,7 +179,20 @@ p {
     width: 250px;
 }
 
+#recipeBookLabel {
+    color: olivedrab;
+}
+
+#recipeBookLabel2 {
+    color: olivedrab;
+}
+
+#nameField {
+    color: olivedrab;
+}
+
 #recipeToBeSaved {
+    color: olivedrab;
     width: 250px;
     height: 250px;
 }

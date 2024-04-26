@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <td>
-                        <label for="nameField">New RecipeBook</label>
+                        <label id="recipeBookLabel" for="nameField">New RecipeBook</label>
                         <input type="text" id="nameField" th:field="*{recipeBookName}"/>
                     </td>
                 </tr>
@@ -30,7 +30,7 @@
                 <tr>
                     <td>
                         <div class="select-div">
-                            <label for="recipeToBeSaved">Recipe's</label>
+                            <label id="recipeBookLabel2" for="recipeToBeSaved">Recipe's</label>
                             <select th:field="*{recipesSet}" id="recipeToBeSaved" name="addRecipeToBook" multiple>
                                 <option th:each="recipe : ${allRecipes}"
                                         th:value="${recipe.recipeId}"
