@@ -3,24 +3,24 @@ body {
 }
 
 h1 {
-    font-size: larger;
+    font-size: xx-large;
     font-family: Arial, sans-serif;
     color: olivedrab;
 }
 
 h2 {
-    font-size: large;
+    font-size: x-large;
     font-family: Arial, sans-serif;
     color: olivedrab;
 }
 
 .homeImageContainer {
-    background-image: url(static/images/FirstDolmen.png);
-    background-repeat: no-repeat;
+    background-image: url('../images/FirstDolmen.png');
+    /*background-repeat: no-repeat;*/
     float: left;
     width: 100px;
     height: 100px;
-    /*object-fit: scale-down;*/
+    position: absolute;
 }
 
 .nav-link {
